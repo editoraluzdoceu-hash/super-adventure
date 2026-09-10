@@ -2,631 +2,1163 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#102a43">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="icon" href="icons/favicon.ico">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
-<link rel="manifest" href="manifest.json">
-<meta name="description" content="Método RESET — app interativo de reconstrução pessoal: ferramentas, plano de 30 dias e diário.">
-<title>Método RESET — App</title>
+<meta name="description" content="Método RESET — Reconstrua sua vida depois que o chão desaparece. App, livro e ferramentas práticas.">
+<meta property="og:title" content="Método RESET | Descubra o que fazer primeiro">
+<meta property="og:description" content="Você não precisa resolver tudo hoje. Organize o que está acontecendo e encontre um próximo passo possível.">
+<meta property="og:type" content="website">
+<title>Método RESET | Descubra o que fazer primeiro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#102a43;--muted:#627d98;--line:#d9e2ec;--paper:#fff;--bg:#f4f7fa;--accent:#e76f51;--accent2:#2a9d8f;--gold:#f4a261;--shadow:0 12px 34px rgba(16,42,67,.09);--r:13px}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer;border:0;background:none}
-.app{display:flex;min-height:100vh}
-.side{width:262px;background:var(--ink);color:#fff;padding:26px 16px;position:fixed;top:0;bottom:0;overflow:auto;z-index:20}
-.brand{display:flex;gap:12px;align-items:center;margin:0 6px 26px}
-.mark{width:42px;height:42px;border-radius:var(--r);background:linear-gradient(135deg,var(--accent),var(--gold));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff;flex:none}
-.brand b{display:block;font-size:17px;letter-spacing:.4px}
-.brand small{display:block;color:#bcccdc;font-size:12px;font-weight:500}
-.nav a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:#cdd9e6;text-decoration:none;margin-bottom:4px;font-weight:600;font-size:14.5px}
-.nav a.on{background:rgba(255,255,255,.12);color:#fff}
-.nav a .ic{width:20px;text-align:center;flex:none}
-.nav .sep{height:1px;background:rgba(255,255,255,.14);margin:14px 6px}
-.side .tagline{color:#8fa8c0;font-size:12px;line-height:1.55;margin:14px 8px 0}
-.main{margin-left:262px;flex:1;min-width:0;padding:28px 32px 90px}
-.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;gap:12px;flex-wrap:wrap}
-.topbar h1{font-size:24px;margin:0;letter-spacing:.3px}
-.topbar .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--muted)}
-.mobnav{display:none}
-.view{display:none}
-.view.on{display:block;animation:fade .25s ease}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px;margin-bottom:18px;box-shadow:var(--shadow)}
-.card h2{margin:0 0 10px;font-size:18px}
-.card h3{font-size:15.5px;margin:14px 0 6px}
-.card p{margin:8px 0}
-.muted{color:var(--muted)}
-.gold-bg{background:linear-gradient(135deg,#fff7f0,#fff);border-color:#f6d8bf}
-.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:800;letter-spacing:.6px}
-.b-r{background:#ffe9e3;color:#c14a2d}.b-e{background:#e0f2f0;color:#1f7a6f}.b-s{background:#fff3df;color:#b06f13}.b-t{background:#e8edf7;color:#33507a}
-.row{display:flex;gap:14px;flex-wrap:wrap}
-.btn{background:var(--ink);color:#fff;padding:11px 18px;border-radius:11px;font-weight:700;font-size:14.5px;display:inline-block}
-.btn.sec{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
-.btn.acc{background:var(--accent)}
-.btn:disabled{opacity:.5;cursor:default}
-label{display:block;font-weight:650;font-size:13.5px;color:var(--muted);margin:14px 0 5px}
-input[type=text],input[type=number],input[type=date],textarea,select{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff;color:var(--ink)}
-textarea{min-height:64px;resize:vertical}
-input:focus,textarea:focus,select:focus{outline:2px solid var(--accent2);outline-offset:1px;border-color:var(--accent2)}
-.chk{display:flex;gap:12px;align-items:flex-start;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin-bottom:8px;cursor:pointer}
-.chk input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--accent2);flex:none}
-.chk.done{background:#eef7f5;border-color:#bfe0da}
-.chk.done .ct{text-decoration:line-through;color:var(--muted)}
-.chk .ct{font-size:14.5px;line-height:1.45}
-.chk .st{margin-left:auto;color:var(--accent2);font-weight:800;visibility:hidden}
-.chk.done .st{visibility:visible}
-.prog{height:10px;background:#e6edf4;border-radius:99px;overflow:hidden}
-.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),#3bb09f);border-radius:99px;transition:width .4s}
-.stat{display:flex;gap:14px;flex-wrap:wrap}
-.stat .box{flex:1;min-width:150px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px;text-align:center}
-.stat .box b{display:block;font-size:26px;color:var(--accent);margin:0}
-.stat .box span{font-size:12.5px;color:var(--muted);font-weight:600}
-.part{background:linear-gradient(135deg,var(--ink),#1d3b5f);color:#fff;border-radius:var(--r);padding:18px 20px;margin-bottom:14px}
-.part .tag{color:var(--gold);font-weight:800;letter-spacing:1px;font-size:12px}
-.part h3{margin:4px 0 6px;font-size:18px}
-.part p{margin:0;color:#c9d7e6;font-size:13.5px}
-.chap{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:15px 17px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:.15s}
-.chap:hover{box-shadow:var(--shadow)}
-.chap .num{width:34px;height:34px;flex:none;border-radius:10px;background:#eef1f6;color:var(--muted);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
-.chap .num.done{background:var(--accent2);color:#fff}
-.chap h4{margin:0 0 2px;font-size:15px}
-.chap p{margin:0;color:var(--muted);font-size:13.5px}
-.chap .go{margin-left:auto;color:var(--accent2);font-weight:800}
-.tip{border-left:3px solid var(--gold);background:#fffaf3;border-radius:0 10px 10px 0;padding:10px 14px;margin:12px 0;font-size:14px}
-.warn{border-left:3px solid var(--accent);background:#fff4f0;border-radius:0 10px 10px 0;padding:10px 14px;margin:12px 0;font-size:14px}
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:12px}
-.tcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px;cursor:pointer;transition:.15s;text-align:left;width:100%}
-.tcard:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
-.tcard .ic{font-size:22px}
-.tcard b{display:block;margin:6px 0 3px;font-size:14.5px}
-.tcard span{font-size:12.5px;color:var(--muted);line-height:1.45;display:block}
-.hlist .item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px;background:#fff}
-.hlist .item .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.hlist .item b{font-size:13.5px}
-.hlist .item small{color:var(--muted)}
-.hlist .item .del{color:var(--accent);font-weight:800;font-size:16px;padding:2px 8px}
-.jentry{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px;background:#fff}
-.jentry .top{display:flex;justify-content:space-between;gap:8px}
-.jentry b{font-size:13.5px}
-.jentry small{color:var(--muted)}
-.emojirow{display:flex;gap:8px;flex-wrap:wrap}
-.emojirow button{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:#fff;font-size:15px}
-.emojirow button.on{border-color:var(--accent2);background:#eef7f5}
-.modal{position:fixed;inset:0;background:rgba(16,42,67,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:18px}
-.modal.on{display:flex}
-.modal .box{background:#fff;border-radius:16px;max-width:640px;width:100%;max-height:88vh;overflow:auto;padding:26px}
-.hidden{display:none!important}
-.onb{max-width:560px;margin:0 auto}
-.steps{display:flex;gap:8px;margin:18px 0}
-.steps i{height:5px;flex:1;border-radius:99px;background:#dfe7ee}
-.steps i.on{background:var(--accent2)}
-.bottom-actions{display:flex;gap:10px;justify-content:space-between;margin-top:18px;align-items:center}
-.quote{font-size:16.5px;line-height:1.65;color:var(--ink);font-style:italic;border-left:4px solid var(--accent);padding:4px 0 4px 16px;margin:0}
-.quote .who{display:block;font-style:normal;font-size:12.5px;color:var(--muted);margin-top:8px}
-.let{display:inline-flex;width:40px;height:40px;border-radius:12px;align-items:center;justify-content:center;font-weight:800;font-size:19px;color:#fff;margin:0 4px 4px 0}
-@media(max-width:880px){
- .side{display:none}
- .main{margin-left:0;padding:18px 16px 100px}
- .mobnav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);z-index:30;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
- .mobnav a{flex:1;text-align:center;padding:8px 2px;color:var(--muted);font-size:12px;font-weight:700;text-decoration:none;border-radius:10px}
- .mobnav a.on{color:var(--ink);background:#eef1f6}
- .mobnav a .ic{display:block;font-size:19px}
- .topbar h1{font-size:20px}
+:root{
+  --ink:#102a43;
+  --ink-light:#1d3b5f;
+  --muted:#627d98;
+  --gold:#d4af37;
+  --gold-light:#f4a261;
+  --accent:#e76f51;
+  --bg:#fafbfc;
+  --white:#ffffff;
+  --border:#e8edf2;
+  --shadow:0 20px 60px rgba(16,42,67,.08);
+  --shadow-hover:0 30px 80px rgba(16,42,67,.12);
 }
-@media print{.side,.mobnav,.topbar{display:none}.main{margin:0;padding:0}}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.3}
+
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* Hero Section */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  background:linear-gradient(135deg,var(--ink) 0%,var(--ink-light) 100%);
+  color:var(--white);
+  position:relative;
+  overflow:hidden;
+  padding:80px 0 60px;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  top:0;right:0;bottom:0;left:0;
+  background:radial-gradient(circle at 70% 50%,rgba(212,175,55,.15) 0%,transparent 50%);
+  pointer-events:none;
+}
+
+.hero-content{
+  position:relative;
+  z-index:1;
+  max-width:900px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.hero-eyebrow{
+  display:inline-block;
+  font-size:.85rem;
+  font-weight:600;
+  letter-spacing:2px;
+  color:var(--gold);
+  margin-bottom:24px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-size:clamp(2.5rem,6vw,4.5rem);
+  margin-bottom:32px;
+  background:linear-gradient(135deg,var(--white) 0%,var(--gold) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1.2;
+}
+
+.hero-subtitle{
+  font-size:clamp(1.1rem,2.5vw,1.5rem);
+  color:#cdd9e6;
+  margin-bottom:16px;
+  line-height:1.6;
+}
+
+.hero-subtitle em{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  color:var(--gold);
+}
+
+.hero-description{
+  font-size:1.1rem;
+  color:#bcccdc;
+  margin-bottom:48px;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.8;
+}
+
+.hero-cta{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
+
+.btn{
+  padding:18px 40px;
+  border-radius:12px;
+  font-weight:600;
+  font-size:1rem;
+  text-decoration:none;
+  display:inline-block;
+  transition:all .3s;
+  border:none;
+  cursor:pointer;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);
+  color:var(--ink);
+  box-shadow:0 10px 30px rgba(212,175,55,.3);
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 15px 40px rgba(212,175,55,.4);
+}
+
+.btn-secondary{
+  background:transparent;
+  color:var(--white);
+  border:2px solid rgba(255,255,255,.3);
+}
+
+.btn-secondary:hover{
+  background:rgba(255,255,255,.1);
+  border-color:var(--white);
+}
+
+.hero-quote{
+  margin-top:48px;
+  padding:24px 32px;
+  background:rgba(255,255,255,.05);
+  border-left:4px solid var(--gold);
+  border-radius:8px;
+  text-align:left;
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.hero-quote blockquote{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:1.2rem;
+  color:var(--white);
+  margin-bottom:12px;
+}
+
+.hero-quote cite{
+  font-size:.9rem;
+  color:#bcccdc;
+  font-style:normal;
+}
+
+/* Section Base */
+section{padding:120px 0}
+
+.section-eyebrow{
+  display:block;
+  font-size:.8rem;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:16px;
+  text-align:center;
+}
+
+.section-header{text-align:center;margin-bottom:80px;max-width:800px;margin-left:auto;margin-right:auto}
+
+.section-header h2{
+  font-size:clamp(2rem,4vw,3rem);
+  margin-bottom:20px;
+  color:var(--ink);
+  line-height:1.3;
+}
+
+.section-header h2 em{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  color:var(--gold);
+}
+
+.section-header p{
+  font-size:1.15rem;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+/* Problem Section */
+.problem{background:var(--white)}
+
+.problem-content{
+  max-width:800px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.problem-content h2{
+  font-size:clamp(2rem,4vw,3rem);
+  margin-bottom:24px;
+}
+
+.problem-content h2 em{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  color:var(--gold);
+}
+
+.problem-content > p{
+  font-size:1.15rem;
+  color:var(--muted);
+  margin-bottom:40px;
+  line-height:1.8;
+}
+
+.steps-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:32px;
+  margin-top:60px;
+}
+
+.step-item{
+  text-align:left;
+  padding:32px;
+  background:var(--bg);
+  border-radius:16px;
+  border:1px solid var(--border);
+  transition:all .3s;
+}
+
+.step-item:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow);
+  border-color:var(--gold);
+}
+
+.step-number{
+  font-size:2.5rem;
+  font-weight:700;
+  color:var(--gold);
+  font-family:'Playfair Display',serif;
+  margin-bottom:16px;
+}
+
+.step-item h3{
+  font-size:1.3rem;
+  margin-bottom:12px;
+  color:var(--ink);
+}
+
+.step-item p{
+  color:var(--muted);
+  line-height:1.7;
+  font-size:.95rem;
+}
+
+/* Tools Section */
+.tools{background:var(--bg)}
+
+.tools-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px;
+  margin-top:60px;
+}
+
+.tool-card{
+  background:var(--white);
+  padding:36px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  transition:all .3s;
+}
+
+.tool-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-hover);
+  border-color:var(--gold);
+}
+
+.tool-card h3{
+  font-size:1.4rem;
+  margin-bottom:16px;
+  color:var(--ink);
+}
+
+.tool-card p{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* Book Section */
+.book{background:var(--white)}
+
+.book-content{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.book-text h2{
+  font-size:clamp(2rem,4vw,3rem);
+  margin-bottom:24px;
+}
+
+.book-text h2 em{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  color:var(--gold);
+}
+
+.book-text > p{
+  font-size:1.1rem;
+  color:var(--muted);
+  margin-bottom:24px;
+  line-height:1.8;
+}
+
+.book-features{
+  list-style:none;
+  margin:32px 0;
+}
+
+.book-features li{
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+  color:var(--ink);
+  font-size:1rem;
+}
+
+.book-features li:last-child{border-bottom:none}
+
+/* Author Section */
+.author{
+  background:linear-gradient(135deg,var(--ink) 0%,var(--ink-light) 100%);
+  color:var(--white);
+}
+
+.author .section-eyebrow{color:var(--gold)}
+
+.author .section-header h2{color:var(--white)}
+.author .section-header h2 em{color:var(--gold)}
+.author .section-header p{color:#cdd9e6}
+
+.author-content{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:60px;
+  align-items:start;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+.author-quote{
+  padding:32px;
+  background:rgba(255,255,255,.05);
+  border-left:4px solid var(--gold);
+  border-radius:8px;
+  margin-bottom:32px;
+}
+
+.author-quote blockquote{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:1.2rem;
+  color:var(--white);
+  margin-bottom:16px;
+  line-height:1.6;
+}
+
+.author-quote cite{
+  font-size:1rem;
+  color:var(--gold);
+  font-style:normal;
+  font-weight:600;
+}
+
+.author-bio{
+  color:#bcccdc;
+  line-height:1.8;
+  font-size:1rem;
+}
+
+.author-bio p{margin-bottom:20px}
+
+.author-bio strong{color:var(--gold)}
+
+/* Testimonials */
+.testimonials{background:var(--bg)}
+
+.testimonials-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:32px;
+}
+
+.testimonial{
+  background:var(--white);
+  padding:40px;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  position:relative;
+}
+
+.testimonial::before{
+  content:'"';
+  position:absolute;
+  top:20px;left:30px;
+  font-size:5rem;
+  color:var(--gold);
+  opacity:.2;
+  font-family:'Playfair Display',serif;
+  line-height:1;
+}
+
+.testimonial-context{
+  font-size:.85rem;
+  color:var(--muted);
+  margin-bottom:20px;
+  font-style:italic;
+}
+
+.testimonial-text{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:1.15rem;
+  line-height:1.8;
+  color:var(--ink);
+  margin-bottom:32px;
+  position:relative;
+  z-index:1;
+}
+
+.testimonial-author{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.author-avatar{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--ink);
+  font-weight:700;
+  font-size:1.3rem;
+  flex:none;
+}
+
+.author-info h4{
+  font-size:1.1rem;
+  margin-bottom:4px;
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+}
+
+.author-info p{
+  font-size:.9rem;
+  color:var(--muted);
+}
+
+/* Pricing */
+.pricing{background:var(--white)}
+
+.pricing-card{
+  max-width:600px;
+  margin:60px auto 0;
+  background:var(--bg);
+  border:2px solid var(--gold);
+  border-radius:20px;
+  padding:60px 48px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.pricing-badge{
+  display:inline-block;
+  padding:8px 20px;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);
+  color:var(--ink);
+  border-radius:999px;
+  font-size:.85rem;
+  font-weight:700;
+  letter-spacing:1px;
+  margin-bottom:32px;
+}
+
+.pricing-price{
+  margin-bottom:32px;
+}
+
+.pricing-price .old{
+  font-size:1.2rem;
+  color:var(--muted);
+  text-decoration:line-through;
+  margin-bottom:8px;
+}
+
+.pricing-price .current{
+  font-size:3.5rem;
+  font-weight:700;
+  color:var(--ink);
+  font-family:'Playfair Display',serif;
+}
+
+.pricing-price .current span{
+  font-size:2rem;
+  vertical-align:top;
+}
+
+.pricing-note{
+  font-size:.95rem;
+  color:var(--muted);
+  margin-bottom:40px;
+}
+
+.pricing-features{
+  list-style:none;
+  text-align:left;
+  margin:40px 0;
+}
+
+.pricing-features li{
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+  color:var(--ink);
+  font-size:1rem;
+  display:flex;
+  align-items:start;
+  gap:12px;
+}
+
+.pricing-features li:last-child{border-bottom:none}
+
+.pricing-features li::before{
+  content:'✓';
+  color:var(--gold);
+  font-weight:700;
+  font-size:1.2rem;
+  flex:none;
+}
+
+.pricing-guarantee{
+  margin-top:40px;
+  padding:24px;
+  background:var(--white);
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+
+.pricing-guarantee h4{
+  font-size:1.1rem;
+  margin-bottom:12px;
+  color:var(--ink);
+}
+
+.pricing-guarantee p{
+  font-size:.95rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* FAQ */
+.faq{background:var(--bg)}
+
+.faq-grid{
+  max-width:800px;
+  margin:60px auto 0;
+}
+
+.faq-item{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:12px;
+  margin-bottom:16px;
+  overflow:hidden;
+  transition:all .3s;
+}
+
+.faq-item:hover{
+  border-color:var(--gold);
+}
+
+.faq-question{
+  padding:24px 32px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.faq-question h3{
+  font-size:1.1rem;
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  margin:0;
+}
+
+.faq-toggle{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold);
+  font-size:1.5rem;
+  font-weight:300;
+  flex:none;
+  transition:all .3s;
+}
+
+.faq-item.active .faq-toggle{
+  background:var(--gold);
+  color:var(--ink);
+  transform:rotate(45deg);
+}
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .3s ease;
+}
+
+.faq-item.active .faq-answer{
+  max-height:500px;
+}
+
+.faq-answer-content{
+  padding:0 32px 24px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+/* CTA Final */
+.cta-final{
+  background:linear-gradient(135deg,var(--ink) 0%,var(--ink-light) 100%);
+  color:var(--white);
+  text-align:center;
+  padding:120px 0;
+}
+
+.cta-final .section-eyebrow{color:var(--gold)}
+
+.cta-final h2{
+  font-size:clamp(2rem,4vw,3rem);
+  color:var(--white);
+  margin-bottom:20px;
+}
+
+.cta-final h2 em{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  color:var(--gold);
+}
+
+.cta-final > .container > p{
+  font-size:1.2rem;
+  color:#cdd9e6;
+  margin-bottom:48px;
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.cta-final .btn-primary{margin-bottom:24px}
+
+.cta-final .pricing-info{
+  font-size:1rem;
+  color:#bcccdc;
+}
+
+/* Footer */
+footer{
+  padding:40px 0;
+  background:var(--ink);
+  color:#8fa8c0;
+  text-align:center;
+}
+
+footer p{font-size:.95rem}
+
+/* Responsive */
+@media(max-width:968px){
+  .book-content,.author-content{grid-template-columns:1fr;gap:40px}
+  .steps-grid,.tools-grid,.testimonials-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:640px){
+  section{padding:80px 0}
+  .hero{padding:60px 0 40px}
+  .section-header{margin-bottom:50px}
+  .tool-card,.testimonial,.pricing-card{padding:32px 24px}
+  .btn{padding:16px 32px;font-size:.95rem}
+  .faq-question{padding:20px 24px}
+  .faq-answer-content{padding:0 24px 20px}
+}
 </style>
 </head>
 <body>
-<div class="app">
-<aside class="side">
-  <div class="brand"><div class="mark">R</div><div><b>Método RESET</b><small>Reconstrução pessoal</small></div></div>
-  <nav class="nav">
-    <a href="#" data-view="home" class="on"><span class="ic">⌂</span> Início</a>
-    <a href="#" data-view="journey"><span class="ic">◈</span> Jornada</a>
-    <a href="#" data-view="tools"><span class="ic">⚒</span> Ferramentas</a>
-    <a href="#" data-view="plan"><span class="ic">▤</span> Plano de 30 dias</a>
-    <a href="#" data-view="journal"><span class="ic">✎</span> Diário</a>
-    <div class="sep"></div>
-    <a href="#" data-view="about"><span class="ic">i</span> Sobre o método</a>
-  </nav>
-  <p class="tagline">Reconhecer • Estabilizar • Sistematizar • Executar • Transformar</p>
-</aside>
-<main class="main">
-  <div class="topbar"><h1 id="topTitle">Início</h1><span class="chip" id="topChip"></span></div>
-  <!-- ONBOARDING -->
-  <div class="modal on" id="onbModal">
-    <div class="box onb">
-      <div class="brand" style="margin:0 0 16px"><div class="mark">R</div><div><b>Método RESET</b><small>Reconstrução pessoal</small></div></div>
-      <div class="steps" id="obSteps"><i class="on"></i><i></i><i></i></div>
-      <div id="ob1">
-        <h2 style="margin:0 0 4px">Vamos começar</h2>
-        <p class="muted" style="margin:0 0 4px">Este app transforma o livro <b>Método RESET</b> em ferramentas práticas. Tudo o que você escrever fica salvo apenas no seu dispositivo.</p>
-        <label>Como posso te chamar?</label>
-        <input type="text" id="obNome" placeholder="Seu nome (opcional)">
-        <label>Em poucas palavras, o que desmoronou para você? (opcional)</label>
-        <textarea id="obPerda" placeholder="Ex.: perdi o emprego e um casamento no mesmo ano..."></textarea>
-        <div class="bottom-actions"><span></span><button class="btn" id="obNext1">Avançar →</button></div>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Um próximo passo. Não a vida inteira.</span>
+      <h1>Método RESET.</h1>
+      <p class="hero-subtitle">Você não precisa <em>resolver tudo hoje.</em></p>
+      <p class="hero-description">Organize o que está acontecendo, entenda suas prioridades e encontre um próximo passo possível.</p>
+      <div class="hero-cta">
+        <a href="https://pay.cakto.com.br/8anjw6z_1076473" target="_blank" rel="noopener" class="btn btn-primary">Descobrir meu próximo passo</a>
+        <a href="#produto" class="btn btn-secondary">Ver por dentro</a>
       </div>
-      <div id="ob2" class="hidden">
-        <h2 style="margin:0 0 4px">Escala de Prontidão RESET</h2>
-        <p class="muted" style="margin:0">Responda com sinceridade — isso indica em qual fase do método você está agora.</p>
-        <div id="obPr"></div>
-        <div class="bottom-actions"><button class="btn sec" id="obBack1">← Voltar</button><button class="btn" id="obNext2">Ver meu resultado →</button></div>
-      </div>
-      <div id="ob3" class="hidden">
-        <h2 style="margin:0 0 6px" id="obFase">—</h2>
-        <p class="muted" id="obOrient" style="margin:0 0 8px"></p>
-        <div class="tip" id="obTip"></div>
-        <div class="bottom-actions"><button class="btn sec" id="obBack2">← Voltar</button><button class="btn acc" id="obDone">Entrar no método</button></div>
+      <div class="hero-quote">
+        <blockquote>"Pela primeira vez eu não desisti de mim."</blockquote>
+        <cite>— Thiago M. sobre o Protocolo de Recaída</cite>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- HOME -->
-  <section class="view on" id="v-home">
-    <div class="card" id="homeHello"></div>
-    <div class="stat" id="homeStats"></div>
-    <div class="row" style="margin-top:18px">
-      <div class="card" style="flex:2;min-width:280px" id="homeNext"></div>
-      <div class="card gold-bg" style="flex:1.4;min-width:250px" id="homeFase"></div>
+<!-- Problem Section -->
+<section class="problem">
+  <div class="container">
+    <div class="problem-content">
+      <span class="section-eyebrow">Talvez não falte força. Falte direção.</span>
+      <h2>Menos cobrança. <em>Mais um caminho.</em></h2>
+      <p>Uma separação, uma perda, uma mudança inesperada. Quando a vida sai do eixo, você não precisa de mais um "pensa positivo". Precisa saber por onde começar.</p>
+      <a href="#produto" class="btn btn-primary">Encontre seu ponto de partida</a>
     </div>
-    <div class="card" id="homeQuote"></div>
-    <div class="card" id="homePlan"></div>
-  </section>
-
-  <!-- JORNADA -->
-  <section class="view" id="v-journey">
-    <div class="card">
-      <p style="margin:0" class="muted">Acompanhe a história de Marcelo — e o seu próprio percurso — pelos 15 capítulos do livro. Toque em um capítulo para ler um trecho, o resumo acionável e abrir a ferramenta correspondente.</p>
-    </div>
-    <div id="journeyList"></div>
-  </section>
-
-  <!-- SOBRE -->
-  <section class="view" id="v-about">
-    <div class="card">
-      <h2>O que é o Método RESET</h2>
-      <p><b>MÉTODO RESET</b> é um caminho estruturado de reconstrução pessoal para quando o chão desaparece: um casamento, um emprego, uma identidade inteira. Cada letra representa uma fase real:</p>
-      <p>
-        <span class="let" style="background:#e76f51">R</span> <b>Reconhecer</b> — separar fato de interpretação e recuperar clareza.<br>
-        <span class="let" style="background:#2a9d8f">E</span> <b>Estabilizar</b> — corpo, mente, emoções e finanças; estancar antes de crescer.<br>
-        <span class="let" style="background:#f4a261">S</span> <b>Sistematizar</b> — desenhar hábitos com gatilho, rotina e recompensa.<br>
-        <span class="let" style="background:#2a9d8f">E</span> <b>Executar</b> — sustentar com resiliência a recaídas (e sair delas rápido).<br>
-        <span class="let" style="background:#33507a">T</span> <b>Transformar</b> — mudar de identidade, não "voltar ao normal".
-      </p>
-      <p class="muted" style="font-size:14px">"Este livro não promete milagre. Promete estrutura." — a mesma promessa deste app.</p>
-    </div>
-    <div class="card">
-      <h2>Sobre o autor</h2>
-      <p>Lucas de Freitas Sousa Oliveira escreveu o livro no meio do próprio colapso: após a pandemia, perdeu o emprego nas Forças Armadas e, no início do ano, a esposa. Uniu o que estudou de Psicologia (5 períodos) sobre luto, hábitos e psicologia cognitiva à própria experiência — testando o que realmente funcionava.</p>
-      <p class="muted" style="font-size:14px">A história de Marcelo, presente no livro, é uma composição narrativa baseada em padrões reais de reconstrução — não retrata uma pessoa específica.</p>
-    </div>
-    <div class="warn">
-      <b>Aviso importante:</b> o Método RESET é uma ferramenta de organização e reconstrução pessoal — <b>não substitui</b> acompanhamento clínico, psicológico ou psiquiátrico. Pensamentos recorrentes de fazer mal a si mesmo, incapacidade completa de autocuidado por semanas, uso de álcool/substâncias como única saída ou desconexão da realidade exigem ajuda profissional imediata.
-    </div>
-    <div class="card">
-      <button class="btn sec" id="resetData">Apagar todos os meus dados deste app</button>
-      <p class="muted" style="font-size:13px;margin:10px 0 0">Os dados ficam apenas no seu navegador (armazenamento local) e podem ser apagados a qualquer momento.</p>
-    </div>
-  </section>
-
-  <!-- MODAL DE CAPÍTULO -->
-  <div class="modal" id="chModal"><div class="box" id="chBox"></div></div>
-  <!-- FERRAMENTAS -->
-  <section class="view" id="v-tools">
-    <div class="tools-grid" id="toolsGrid"></div>
-    <div class="hidden" id="toolBox">
-      <button class="btn sec" id="toolsBack" style="margin-bottom:14px">← Todas as ferramentas</button>
-      <div id="toolBody"></div>
-    </div>
-  </section>
-  <!-- PLANO 30 DIAS -->
-  <section class="view" id="v-plan">
-    <div class="card">
-      <span class="badge b-t">PARTE IV · O NOVO CAPÍTULO</span>
-      <h2 style="margin:10px 0 6px">Cronograma RESET de 30 dias</h2>
-      <p class="muted" style="margin:0">Sequencie, não empilhe: primeiro reconhecer e estabilizar, depois sistematizar e executar. Ajuste o ritmo pela sua Escala de Prontidão — se preciso, repita as semanas 2 e 3 quantas vezes forem necessárias.</p>
-    </div>
-    <div id="planWeeks"></div>
-  </section>
-
-  <!-- DIÁRIO -->
-  <section class="view" id="v-journal">
-    <div class="card">
-      <h2>Check-in do dia</h2>
-      <div class="row" style="gap:14px">
-        <div style="flex:1;min-width:180px"><label style="margin-top:0">Data</label><input type="date" id="jDate"></div>
-        <div style="flex:1;min-width:180px"><label style="margin-top:0">Emoção predominante</label>
-          <select id="jEmo"><option>Raiva</option><option>Tristeza</option><option>Medo</option><option>Vergonha</option><option>Alívio</option><option>Ansiedade</option><option>Alegria</option><option>Calma</option><option>Outra</option></select>
-        </div>
-        <div style="flex:1;min-width:140px"><label style="margin-top:0">Intensidade (0–10)</label><input type="number" id="jInt" min="0" max="10" value="5"></div>
+    <div class="steps-grid">
+      <div class="step-item">
+        <div class="step-number">01</div>
+        <h3>Entenda onde você está</h3>
+        <p>Olhe para o seu momento com mais clareza. O quiz ajuda a encontrar um ponto de partida, sem precisar ter todas as respostas.</p>
       </div>
-      <label>O que a disparou e o que você fez com ela (reagiu, evitou, conversou, escreveu, deixou passar)</label>
-      <textarea id="jNota" placeholder="Registro livre — alguns minutos bastam."></textarea>
-      <div class="bottom-actions"><span></span><button class="btn acc" id="jAdd">Salvar registro</button></div>
+      <div class="step-item">
+        <div class="step-number">02</div>
+        <h3>Descubra o que merece atenção</h3>
+        <p>Identifique quais áreas da sua vida precisam de cuidado agora, sem sobrecarga ou pressão.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">03</div>
+        <h3>Encontre seu próximo passo</h3>
+        <p>Receba uma sugestão prática de ferramenta para começar, baseada no seu momento atual.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">04</div>
+        <h3>Continue avançando</h3>
+        <p>Avance no seu tempo, com ferramentas que se adaptam à sua jornada de reconstrução.</p>
+      </div>
     </div>
-    <div id="jList"></div>
-  </section>
-  <!-- close main/app -->
-</main>
-</div>
-<div class="mobnav">
-  <a href="#" data-view="home" class="on"><span class="ic">⌂</span>Início</a>
-  <a href="#" data-view="journey"><span class="ic">◈</span>Jornada</a>
-  <a href="#" data-view="tools"><span class="ic">⚒</span>Ferramentas</a>
-  <a href="#" data-view="plan"><span class="ic">▤</span>Plano</a>
-  <a href="#" data-view="journal"><span class="ic">✎</span>Diário</a>
-</div>
-<script>
-/* ============================================================
-   MÉTODO RESET — app interativo
-   Conteúdo integralmente baseado no livro "Método RESET"
-   de Lucas de Freitas Sousa Oliveira.
-   ============================================================ */
-const QUOTES=[
- {t:"Este livro não promete milagre. Promete estrutura.",w:"Introdução"},
- {t:"Não é o evento que determina o tamanho da dor, é o significado que atribuímos a ele.",w:"Capítulo 1"},
- {t:"Isso é exatamente normal. O anormal seria você não sentir nada disso.",w:"Capítulo 2"},
- {t:"A intensidade de um plano de reconstrução não é o mesmo que sua eficácia.",w:"Capítulo 3"},
- {t:"Metas mínimas viáveis, sustentáveis mesmo em dias ruins, geram mais progresso real.",w:"Capítulo 4"},
- {t:"Pensamentos automáticos parecem fatos indiscutíveis no momento em que surgem.",w:"Capítulo 5"},
- {t:"Nomear uma emoção reduz sua intensidade automática.",w:"Capítulo 6"},
- {t:"Estancar antes de crescer.",w:"Capítulo 7"},
- {t:"Reconhecer não é uma etapa única — ganha profundidade quando revisitada.",w:"Capítulo 8"},
- {t:"Sentir que tenho um chão de novo.",w:"Capítulo 9"},
- {t:"Um hábito de cada vez.",w:"Capítulo 10"},
- {t:"O que determina o resultado de longo prazo não é a ausência de falhas — é como você responde à primeira falha.",w:"Capítulo 11"},
- {t:"Você não vai voltar a ser quem era antes. Vai se tornar alguém que nunca existiria sem ter atravessado isso.",w:"Capítulo 12"},
- {t:"Se o chão voltar a tremer, existe agora um método conhecido para reconstruir de novo.",w:"Capítulo 15"}
-];
-const PARTS=[
- {id:"P1",tag:"R",name:"PARTE I — A QUEDA",desc:"Entender o que aconteceu e recuperar clareza. Corresponde ao R (Reconhecer).",color:"#e76f51"},
- {id:"P2",tag:"E",name:"PARTE II — A RECONSTRUÇÃO",desc:"Fortalecer corpo, mente, emoções e finanças. Corresponde ao E (Estabilizar).",color:"#2a9d8f"},
- {id:"P3",tag:"M",name:"PARTE III — O MÉTODO RESET",desc:"O sistema nomeado, passo a passo, para criar hábitos novos e sustentá-los.",color:"#102a43"},
- {id:"P4",tag:"T",name:"PARTE IV — O NOVO CAPÍTULO",desc:"Sequenciar o método no tempo e oferecer um plano realista de manutenção.",color:"#33507a"}
-];
-const CHAPTERS=[
- {n:1,part:"P1",tool:"queda",title:"O dia em que o chão sumiu",
-  tag:"R",tagName:"Reconhecer",
-  excerpt:"Marcelo estava no carro, parado no sinal da Avenida Rebouças, quando o celular vibrou: “Precisamos conversar sério hoje à noite.” Três meses depois, numa segunda-feira comum, ele foi chamado à sala do diretor regional. A conversa durou onze minutos.",
-  body:"O que realmente aconteceu, e o que Marcelo contou a si mesmo: a frase “minha esposa me deixou e fui demitido” é fato. A segunda parte — “eu não presto para nada” — não é fato: é interpretação. Não é o evento que determina o tamanho da dor, é o significado que atribuímos a ele. Separar no papel o que se mistura na cabeça é a base de tudo.",
-  summary:["O sofrimento das primeiras semanas vem tanto do fato quanto — muitas vezes principalmente — da interpretação que você deu a ele.","Separar fato de interpretação não elimina a dor, mas tira uma camada extra de peso que não precisa estar ali.","A Matriz da Queda é o primeiro passo prático do Método RESET, e pode ser revisitada sempre que necessário."]},
- {n:2,part:"P1",tool:"sintomas",title:"Por que dói tanto (e por que isso é normal)",
-  tag:"R",tagName:"Reconhecer",
-  excerpt:"Na terceira semana depois da demissão, Marcelo teve o que descreveria como “um dia em que achei que estava enlouquecendo”. O irmão respondeu: “Isso é exatamente normal. O anormal seria você não sentir nada disso.”",
-  body:"O sistema nervoso humano foi desenhado para reagir a ameaças — e ele não distingue bem entre um predador e uma perda súbita de identidade, segurança financeira e vínculo afetivo. Sono alterado, dificuldade de concentração, oscilações emocionais: tudo isso é um padrão previsível, não evidência de desintegração. Normalizar não é minimizar.",
-  summary:["Os sintomas físicos e emocionais das primeiras semanas seguem um padrão previsível, não são sinal de colapso de caráter.","Normalizar não é o mesmo que minimizar — a dor continua real, mas o medo extra sobre “estar quebrado” pode ser removido.","Use o checklist sempre que a sensação de estranheza consigo mesmo reaparecer."]},
- {n:3,part:"P1",tool:"prontidao",title:"O erro de tentar reconstruir rápido demais",
-  tag:"R",tagName:"Reconhecer",
-  excerpt:"Marcelo decidiu “virar a chave”: acordar às cinco, treinar uma hora, cortar açúcar e álcool, se inscrever num curso, retomar vinte contatos. Dez dias depois, estava de volta ao sofá, com mais vergonha do que antes.",
-  body:"Não foi falta de força de vontade: foi erro de sequenciamento. Sob pressão, nossa capacidade mental disponível cai de forma mensurável — é como se o “processador” estivesse ocupado calculando a ameaça. A pergunta que deveria vir antes de qualquer plano: estou na fase de estabilização de emergência, ou já tenho base para reconstrução ativa?",
-  summary:["Tentar mudar muitas coisas ao mesmo tempo, logo após um colapso, tende a falhar — não por falta de força de vontade, mas por limitação real de capacidade cognitiva sob pressão.","Existem duas fases distintas: estabilização de emergência e reconstrução ativa. Pular a primeira é a causa mais comum de recaída precoce.","Use a Escala de Prontidão a cada 2–3 semanas para acompanhar sua evolução entre as fases."]},
- {n:4,part:"P2",tool:"fisico",title:"Corpo: a base que ninguém quer cuidar primeiro",
-  tag:"E",tagName:"Estabilizar",
-  excerpt:"Marcelo dormia em média quatro horas por noite, se alimentava de forma errática e passava os dias dentro de casa, sem luz natural. Ele não fazia ideia do quanto esse abandono físico alimentava a névoa mental.",
-  body:"Boa parte da “fraqueza de força de vontade” numa crise não é fraqueza de caráter — é o córtex pré-frontal operando com menos recursos, porque o corpo que o sustenta está mal dormido e mal alimentado. A solução começa por metas mínimas viáveis: a menor versão de um hábito que ainda representa cuidado real, sustentável mesmo num dia ruim.",
-  summary:["Boa parte da instabilidade mental e emocional numa crise é amplificada por sono, alimentação e movimento negligenciados — isso é fisiologia, não fraqueza de caráter.","Metas físicas “ideais” tendem a fracassar na fase inicial. Metas mínimas viáveis geram mais progresso real.","Use o Painel de Estabilização Física semanalmente, acompanhando a tendência, não a perfeição."]},
- {n:5,part:"P2",tool:"distanciamento",title:"Mente: parar a espiral sem fingir positividade",
-  tag:"E",tagName:"Estabilizar",
-  excerpt:"“Você precisa pensar positivo”, disse o amigo. Marcelo tentou: “tudo vai dar certo”. Durou pouco — a distância entre o que dizia e o que sentia só aumentava a sensação de estar fingindo.",
-  body:"A mente não muda de opinião porque você repete uma frase bonita; ela muda quando encontra evidência suficiente. Pensamentos automáticos parecem fatos inquestionáveis no momento em que surgem. O caminho é examiná-los como argumentos — situação, pensamento literal, evidência a favor, evidência contra, pensamento alternativo construído a partir de tudo isso.",
-  summary:["Pensamento positivo forçado tende a falhar porque ignora a evidência real — a mente não muda de ideia só porque uma frase bonita foi repetida.","Pensamentos automáticos parecem fatos indiscutíveis, mas raramente consideram toda a evidência disponível.","A Ficha de Distanciamento RESET não elimina pensamentos negativos, mas reduz o poder automático deles."]},
- {n:6,part:"P2",tool:"mapa",title:"Emoções: sentir sem ser dominado",
-  tag:"E",tagName:"Estabilizar",
-  excerpt:"Anos de repressão deixaram Marcelo com apenas duas categorias: “bem” e “mal”. Seis meses depois, um episódio de duas horas de choro ininterrupto o levou a procurar ajuda pela primeira vez.",
-  body:"Reprimir não é o mesmo que superar: empurrar uma emoção para baixo apenas a adia, geralmente com juros. Nomear uma emoção — “estou sentindo raiva” — ativa regiões de regulação e reduz a atividade da amígdala: colocar uma emoção em palavras é, literalmente, uma forma de acalmá-la. Processar não é fraqueza, é manutenção.",
-  summary:["Reprimir uma emoção não a elimina — apenas a adia, geralmente com juros, até um colapso maior mais tarde.","Nomear uma emoção com precisão reduz sua intensidade automática — é um mecanismo real de regulação.","Use o Mapa de Emoções RESET três vezes por semana para desenvolver vocabulário emocional e identificar padrões."]},
- {n:7,part:"P2",tool:"financeiro",title:"Finanças: estancar antes de crescer",
-  tag:"E",tagName:"Estabilizar",
-  excerpt:"Um amigo convidou Marcelo a investir boa parte da rescisão numa franquia. “É uma oportunidade única.” Marcelo passou uma semana seriamente considerando aceitar — movido pela necessidade de sentir controle.",
-  body:"Sob estresse emocional intenso, tendemos a decisões financeiras mais impulsivas e mais suscetíveis a promessas de solução rápida. Não é falha de caráter: é viés bem estudado. Antes de novo investimento ou risco, estanque o sangramento: mapeie gastos essenciais e cortáveis, e construa um colchão mínimo de emergência. Esperar não é recusar.",
-  summary:["Decisões financeiras grandes sob forte vulnerabilidade emocional tendem a ser guiadas pela necessidade de sentir controle, não por análise real de risco e retorno.","Antes de qualquer novo investimento: estanque o sangramento — mapeie gastos essenciais e cortáveis e construa o colchão mínimo.","Decisões financeiras grandes podem — e geralmente devem — esperar até você sair da fase de estabilização de emergência."]},
- {n:8,part:"P3",tool:"queda2",title:"R de Reconhecer",
-  tag:"R",tagName:"Reconhecer",
-  excerpt:"Sete meses depois, Marcelo revisitou a Matriz da Queda. A interpretação “eu não presto para nada” ainda estava lá — mas agora ele via que ela era muito mais antiga que o divórcio.",
-  body:"Reconhecer não é um evento único, é uma prática recorrente que ganha profundidade. Quando a mesma interpretação aparece em situações completamente diferentes ao longo da vida, ela não vem dos fatos — vem de um padrão interno antigo. E isso muda o quanto devemos confiar nela agora.",
-  summary:["Reconhecer não é uma etapa única — ganha profundidade quando revisitada com mais distância emocional.","Interpretações que se repetem em situações diferentes são, provavelmente, padrões internos antigos, não conclusões sobre o evento atual.","Identificar um padrão recorrente pode ser o sinal de que vale buscar apoio profissional mais profundo."]},
- {n:9,part:"P3",tool:"integrado",title:"E de Estabilizar",
-  tag:"E",tagName:"Estabilizar",
-  excerpt:"Sem perceber exatamente quando, as quatro ferramentas da Parte II haviam se fundido numa rotina única. Foi quando Marcelo usou, pela primeira vez, a expressão: “sinto que tenho um chão de novo.”",
-  body:"Hábitos-âncora — pequenos, consistentes — estabilizam o sistema nervoso o suficiente para que mudanças maiores se tornem possíveis. Corpo, mente, emoções e finanças não são compartimentos isolados: fortalecer um libera recursos para os outros. Estabilizar não é “ficar parado” — é trabalho ativo de pequenas escolhas repetidas.",
-  summary:["Hábitos-âncora simples e consistentes estabilizam o sistema nervoso e criam mais capacidade para o trabalho mental e emocional profundo.","Corpo, mente, emoções e finanças não são compartimentos isolados — fortalecer um libera recursos para os outros.","Um painel semanal integrado revela padrões que exercícios isolados tendem a esconder."]},
- {n:10,part:"P3",tool:"habito",title:"S de Sistematizar",
-  tag:"S",tagName:"Sistematizar",
-  excerpt:"“Vou ler mais” durou exatamente dois dias. “Ler dez páginas depois de escovar os dentes” — com chá, X no calendário e meta mínima de uma página — virou hábito.",
-  body:"Todo hábito duradouro sustenta-se num ciclo de três partes: gatilho (algo já automático), rotina (a ação, com versão de dia ruim) e recompensa imediata. A meta mínima viável é o que impede que uma falha pontual vire abandono. Regra de ouro: um hábito de cada vez, e só adicione o segundo depois de duas a três semanas de consistência.",
-  summary:["Todo hábito duradouro depende de três elementos claros: gatilho, rotina e recompensa.","A meta mínima viável para dias ruins é o que impede que uma falha pontual vire abandono total do hábito.","Trabalhe um hábito de cada vez — adicionar complexidade cedo demais é a causa mais comum de fracasso."]},
- {n:11,part:"P3",tool:"recaida",title:"E de Executar",
-  tag:"E",tagName:"Executar",
-  excerpt:"No décimo mês, veio a recaída: sete dias sem ler, sem cozinhar, bebendo demais. E o pensamento: “Volta tudo ao mesmo de sempre.”",
-  body:"Esse pensamento — “já que falhei, tanto faz continuar falhando” — tem nome: efeito de violação da abstinência. Uma falha vira prova de que tudo foi inútil, e o deslize pequeno vira recaída completa. O que importa não é a ausência de falhas, mas como você responde à primeira falha. O protocolo: nomear sem julgar, identificar o gatilho, retomar pela meta mínima hoje mesmo.",
-  summary:["A resposta à primeira falha prediz o resultado de longo prazo muito mais do que a falha em si.","Tratar um lapso como prova de fracasso total é o que transforma um deslize pequeno em recaída completa.","Retomar imediatamente pela meta mínima viável, não pelo nível anterior, é a estratégia mais eficaz."]},
- {n:12,part:"P3",tool:"carta",title:"T de Transformar",
-  tag:"T",tagName:"Transformar",
-  excerpt:"Faltando dias para completar um ano, Marcelo releu a primeira página do caderno: “Acho que estraguei tudo.” Tentou reconhecer o homem que a escreveu. Não era apenas “recuperado” — era diferente, de um jeito mais fundamental.",
-  body:"Voltar ao normal não é a meta certa: não é possível (os fatos mudaram) nem desejável (a vida “normal” anterior ajudou a produzir o colapso). O que sustenta o longo prazo é a mudança de identidade: de “estou tentando ler” para “sou uma pessoa que lê”. A Carta ao Eu Anterior consolida essa distância em palavras.",
-  summary:["“Voltar ao normal” raramente é a meta certa depois de um colapso significativo.","Mudança de identidade (“sou alguém que faz X”) é o que sustenta hábitos no longo prazo, muito além de força de vontade.","Escrever uma carta ao eu anterior ajuda a consolidar, em palavras, a distância real percorrida."]},
- {n:13,part:"P4",tool:"",title:"O Plano de 30 Dias",
-  tag:"T",tagName:"Transformar",
-  excerpt:"Trinta dias não prometem cura — oferecem uma sequência clara e testada para os primeiros passos, os mais confusos e os mais fáceis de sabotar pela pressa.",
-  body:"Sequencie, não empilhe: Semana 1 — Matriz da Queda, Checklist de Sintomas, Escala de Prontidão e início do Painel Físico. Semanas 2 e 3 — Painel Físico, Ficha de Distanciamento, Mapa de Emoções e Painel Financeiro; repetir a Escala ao final da semana 3. Semana 4 — primeiro hábito com o Construtor, execução diária, Protocolo de Recaída se preciso. Ver o Cronograma no menu Plano.",
-  summary:["O Plano de 30 Dias segue a mesma lógica: reconhecer e estabilizar antes de sistematizar e executar.","Não há problema em repetir as semanas 2 e 3 quantas vezes forem necessárias — o ritmo certo é o que a Escala indicar.","Trinta dias bastam para estabelecer as bases; a transformação completa costuma levar meses."]},
- {n:14,part:"P4",tool:"revisao",title:"Revisão: o que fazer quando o progresso estagna",
-  tag:"T",tagName:"Transformar",
-  excerpt:"“Fiz tudo certo — e mesmo assim sinto que parei de melhorar. Será que preciso recomeçar do zero?”",
-  body:"Na grande maioria dos casos, a resposta é não. Estagnação não é fracasso: é informação — um sinal de que o sistema precisa de ajuste. Revisar é mais barato que recomeçar. Oito perguntas específicas (gatilhos ainda automáticos? meta mínima ainda é mínima? recompensa ainda reforça?) substituem um recomeço do zero.",
-  summary:["Estagnação depois de meses de progresso não significa que o sistema falhou — geralmente significa que ele precisa de um ajuste pontual.","Recomeçar do zero é quase sempre mais custoso e menos necessário do que revisar com perguntas específicas.","Use o Checklist de Revisão Trimestral a cada três meses, ou sempre que sentir estagnação."]},
- {n:15,part:"P4",tool:"manutencao",title:"Manutenção: como não regredir daqui a um ano",
-  tag:"T",tagName:"Transformar",
-  excerpt:"Fazia várias semanas que Marcelo não pensava no divórcio ou na demissão com o peso de antes — não porque tivesse esquecido, mas porque aquilo havia se tornado parte da história, não o centro dela.",
-  body:"O risco real não é a recaída, é o esquecimento gradual: deixar de fazer o check-in semanal, o Mapa de Emoções, a revisão trimestral. A ferramenta final é propositalmente esparsa: quatro check-ins por ano, marcados como consulta médica. Manutenção não é vigilância ansiosa — é capacidade de reconstruir de novo, se o chão voltar a tremer.",
-  summary:["O risco de longo prazo raramente é uma crise súbita — é o esquecimento gradual das práticas que sustentaram a reconstrução.","Um painel de manutenção com apenas quatro check-ins anuais é suficiente para prevenir regressões silenciosas.","Este método é um caminho estruturado, não uma garantia — os resultados dependem da prática consistente."]}
-];
-const CHECK_SINTOMAS=["Sono alterado (demais ou de menos)","Apetite alterado (demais ou de menos)","Dificuldade de concentração","Oscilação emocional brusca","Vontade de isolar-se","Pensamentos repetitivos sobre o evento","Cansaço físico sem causa aparente","Irritabilidade fora do padrão"];
-const CHECK_PRONTA=["Durmo ao menos 5–6h por noite na maioria dos dias","Consigo me concentrar em uma tarefa por 20 minutos ou mais","Já não sinto crises de choro ou pânico diárias","Tenho ao menos uma pessoa com quem posso falar abertamente","Minhas finanças básicas estão sob controle mínimo"];
-const TOOLS={
- queda:{name:"Matriz da Queda",part:"Capítulo 1",ic:"▦",badge:"b-r",
-  intro:"O coração do primeiro passo: separar no papel o que se mistura na cabeça. Quarto quadrante é o mais difícil — e o mais importante.",fields:[
-   {k:"fato",label:"O que aconteceu (fato)",ph:"Uma frase curta, sem adjetivos, como um observador neutro registraria."},
-   {k:"hist",label:"A história que estou contando (interpretação)",ph:"O significado que você deu a esse fato."},
-   {k:"custo",label:"O que essa história está me custando",ph:"O que você parou de fazer, ou passou a fazer em excesso, por acreditar nela."},
-   {k:"alt",label:"Uma interpretação alternativa igualmente possível",ph:"Sem precisar acreditar ainda — apenas reconhecendo que ela também cabe nos fatos."}]},
- sintomas:{name:"Checklist de Sintomas Normais da Queda",part:"Capítulo 2",ic:"☑",badge:"b-e",
-  intro:"Lista do que é esperado sentir — não diagnóstico clínico. Marque os itens reconhecíveis nesta semana. Cinco ou mais ainda é esperado nas primeiras semanas.",checks:CHECK_SINTOMAS},
- prontidao:{name:"Escala de Prontidão RESET",part:"Capítulo 3",ic:"◔",badge:"b-s",
-  intro:"Indica em qual fase você está: estabilização de emergência ou reconstrução ativa. Responda a cada 2–3 semanas.",checks:CHECK_PRONTA},
- fisico:{name:"Painel de Estabilização Física",part:"Capítulo 4",ic:"♨",badge:"b-e",
-  intro:"Meta mínima viável para cada pilar — a menor versão do hábito sustentável mesmo num dia ruim. Ao fim da semana, de 0 a 4: quantos você cumpriu na maioria dos dias?",fields:[
-   {k:"sono",label:"Sono — meta mínima",ph:"Ex.: deitar até determinado horário, mesmo sem dormir de imediato"},
-   {k:"mov",label:"Movimento — meta mínima",ph:"Ex.: 15 minutos de caminhada"},
-   {k:"ali",label:"Alimentação — meta mínima",ph:"Ex.: uma refeição completa por dia, sentado, sem pressa"},
-   {k:"luz",label:"Exposição à luz natural — meta mínima",ph:"Ex.: 10 minutos de luz pela manhã"}]},
- distanciamento:{name:"Ficha de Distanciamento RESET",part:"Capítulo 5",ic:"◎",badge:"b-s",
-  intro:"Para pensamentos repetitivos e angustiantes. Examine o pensamento como argumento — não é preciso acreditar no alternativo, apenas ampliar o campo de evidência.",fields:[
-   {k:"sit",label:"Situação",ph:"O que estava acontecendo quando o pensamento surgiu"},
-   {k:"pens",label:"Pensamento automático",ph:"O que passou pela cabeça, da forma mais literal possível"},
-   {k:"favor",label:"Evidência a favor",ph:"Fatos reais que sustentam esse pensamento"},
-   {k:"contra",label:"Evidência contra",ph:"Fatos reais que contradizem esse pensamento"},
-   {k:"alt",label:"Pensamento alternativo",ph:"Versão mais equilibrada, construída com as evidências dos dois lados"}]},
- mapa:{name:"Mapa de Emoções RESET",part:"Capítulo 6",ic:"❖",badge:"b-r",
-  intro:"Três vezes por semana, alguns minutos (de preferência à noite). Depois de algumas semanas, revise em busca de padrões — previsibilidade é regulação.",fields:[
-   {k:"emo",label:"Emoção predominante",ph:"Nomeie com a maior precisão possível (raiva, tristeza, vergonha, alívio, medo...)"},
-   {k:"int",label:"Intensidade (0–10)",type:"number"},
-   {k:"gat",label:"O que a disparou",ph:"A situação, pensamento ou lembrança específica"},
-   {k:"acao",label:"O que fiz com ela",ph:"Reagi, evitei, conversei, escrevi, ou simplesmente senti e deixei passar"}]},
- financeiro:{name:"Painel de Estabilização Financeira",part:"Capítulo 7",ic:"¤",badge:"b-s",
-  intro:"Estancar antes de crescer. Nenhuma decisão financeira grande em espera deve ser tomada enquanto a Escala de Prontidão indicar estabilização de emergência.",fields:[
-   {k:"ess",label:"Gastos essenciais (mês)",ph:"Moradia, comida, transporte, saúde — some o total mensal"},
-   {k:"cort",label:"Gastos cortáveis (3 itens)",ph:"Itens que podem ser reduzidos ou eliminados temporariamente"},
-   {k:"meta",label:"Colchão mínimo de emergência (meta)",ph:"Geralmente o equivalente a 1 mês de gastos essenciais"},
-   {k:"atual",label:"Colchão atual",ph:"Quanto você já tem guardado hoje"},
-   {k:"espera",label:"Decisão financeira grande em espera",ph:"Anote e adie até sair da estabilização de emergência"}]},
- integrado:{name:"Painel de Estabilização Integrado",part:"Capítulo 9",ic:"▤",badge:"b-e",
-  intro:"Uma vez por semana, revise as quatro áreas numa única folha — como um médico revisando os sinais vitais. Observe conexões entre elas.",fields:[
-   {k:"fis",label:"Físico",ph:"Quantos dos 4 pilares (sono, movimento, alimentação, luz) você cumpriu esta semana (0–4)?"},
-   {k:"men",label:"Mental",ph:"Houve algum pensamento automático recorrente que valeria examinar com a Ficha de Distanciamento?"},
-   {k:"emo",label:"Emocional",ph:"Qual foi a emoção predominante dos últimos dias, segundo seu Mapa de Emoções?"},
-   {k:"fin",label:"Financeiro",ph:"Como está o colchão de emergência? Alguma decisão grande ainda em espera?"}]},
- habito:{name:"Construtor de Hábito RESET",part:"Capítulo 10",ic:"⚙",badge:"b-t",
-  intro:"Um hábito de cada vez. Desenhe gatilho, rotina, recompensa, métrica sim/não e a meta mínima para dias ruins. Só adicione um segundo hábito após 2–3 semanas de consistência.",
-  fields:[
-   {k:"nome",label:"Hábito escolhido",ph:"Ação específica e pequena, não meta vaga (ex.: ler 10 páginas)"},
-   {k:"gat",label:"Gatilho",ph:"O que já acontece automaticamente todo dia, imediatamente antes"},
-   {k:"rot",label:"Rotina",ph:"A ação em si + sua versão de dia ruim"},
-   {k:"rec",label:"Recompensa imediata",ph:"Algo que reforça o comportamento logo depois"},
-   {k:"metrica",label:"Métrica de acompanhamento",ph:"Uma única pergunta de sim/não por dia"},
-   {k:"min",label:"Meta mínima viável",ph:"A menor versão que ainda conta como sucesso num dia difícil"}]},
- recaida:{name:"Protocolo de Recaída RESET",part:"Capítulo 11",ic:"↻",badge:"b-r",
-  intro:"Sempre que falhar por 2+ dias seguidos: nomeie sem julgar, identifique o gatilho, retome pela meta mínima hoje mesmo. Não retome pelo nível anterior.",fields:[
-   {k:"nome",label:"Nomear sem julgar",ph:"Escreva o fato, sem adjetivos como “fracassei” ou “sou fraco”"},
-   {k:"gat",label:"Gatilho da recaída",ph:"O que mudou no ambiente, na rotina ou no estado emocional?"},
-   {k:"retomada",label:"Retomada",ph:"Retome hoje pela menor versão possível do hábito"}]},
- queda2:{name:"Matriz da Queda — versão avançada",part:"Capítulo 8",ic:"▦",badge:"b-t",
-  intro:"Depois de preencher a Matriz original, revisite-a com estas duas perguntas — o que revela padrões recorrentes de interpretação.",fields:[
-   {k:"ant",label:"Essa interpretação já apareceu antes?",ph:"Em outros momentos da vida, mesmo com fatos completamente diferentes?"},
-   {k:"conf",label:"Se é um padrão recorrente...",ph:"O que isso muda sobre o quanto você deve confiar nela agora?"}]},
- carta:{name:"Carta ao Eu Anterior",part:"Capítulo 12",ic:"✉",badge:"b-t",
-  intro:"Escreva uma carta ao você de antes, de quando o colapso começou. Guarde-a: vale reler daqui a alguns meses.",fields:[
-   {k:"carta",label:"Carta",type:"textarea",ph:"O que você entende agora que não entendia então • as ferramentas que fizeram diferença • como lidou com as recaídas • uma frase final sobre a diferença entre quem você era e quem está se tornando"}]},
- revisao:{name:"Checklist de Revisão Trimestral",part:"Capítulo 14",ic:"☑",badge:"b-s",
-  intro:"A cada três meses, ou sempre que sentir estagnação. Trate como informação, não como julgamento. Revisar é mais barato que recomeçar.",checks:[
-   "Os gatilhos dos meus hábitos ainda são automáticos, ou se enfraqueceram com mudanças de rotina?",
-   "Minha meta mínima viável ainda é realmente mínima, ou cresceu silenciosamente?",
-   "A recompensa imediata ainda é reforçadora, ou perdeu o efeito?",
-   "Estou preenchendo a métrica com honestidade, ou virou um ritual vazio?",
-   "Alguma das quatro áreas de estabilização regrediu sem que eu percebesse?",
-   "Algum padrão de interpretação antigo está ressurgindo de forma mais sutil?",
-   "A identidade construída está sendo reforçada, ou está sendo dada como certa?",
-   "O que mudou no ambiente ou na vida que talvez exija um ajuste no sistema?"]},
- manutencao:{name:"Painel de Manutenção Anual",part:"Capítulo 15",ic:"◷",badge:"b-r",
-  intro:"Quatro check-ins por ano, marcados como consulta médica. Em cada um: revise a Revisão Trimestral e registre o estado das quatro áreas. Manutenção não é vigilância ansiosa.",fields:[
-   {k:"notas",label:"Notas do check-in",type:"textarea",ph:"Estado das quatro áreas — físico, mental, emocional, financeiro — e qualquer ajuste simples necessário"}]}
-};
-const PLAN_WEEKS=[
- {n:"Semana 1",focus:"Reconhecer e começar a Estabilizar",badge:"b-r",tasks:[
-  "Preencher a Matriz da Queda (Cap. 1)",
-  "Preencher o Checklist de Sintomas Normais (Cap. 2)",
-  "Responder à Escala de Prontidão (Cap. 3)",
-  "Começar o Painel de Estabilização Física com metas mínimas (Cap. 4)"]},
- {n:"Semanas 2 e 3",focus:"Completar a Estabilização e iniciar a Sistematização",badge:"b-e",tasks:[
-  "Continuar o Painel de Estabilização Física",
-  "Usar a Ficha de Distanciamento sempre que um pensamento automático angustiante aparecer (Cap. 5)",
-  "Preencher o Mapa de Emoções 3× por semana (Cap. 6)",
-  "Revisar o Painel de Estabilização Financeira (Cap. 7)",
-  "Repetir a Escala de Prontidão ao final da semana 3 — 4 ou 5 sim? Pronto para avançar. 3 ou menos? Repita as semanas 2 e 3."]},
- {n:"Semana 4",focus:"Executar e revisar",badge:"b-t",tasks:[
-  "Escolher o primeiro hábito com o Construtor de Hábito RESET (Cap. 10)",
-  "Executar diariamente com a métrica sim/não",
-  "Se houver recaída: aplicar o Protocolo de Recaída (Cap. 11)",
-  "Encerrar com uma breve reflexão: o que mudou em 30 dias?"]}
-];
-const SAFETY=["Pensamentos recorrentes de fazer mal a si mesmo","Incapacidade completa de realizar tarefas básicas de autocuidado por várias semanas","Uso de álcool ou substâncias como única forma de lidar com as emoções","Sensação de desconexão da realidade que vai além da névoa mental comum"];
-/* ---------- estado ---------- */
-const LS="reset_app_v1";
-let S={profile:null,tools:{},habits:[],plan:{},caps:{}};
-try{S=Object.assign(S,JSON.parse(localStorage.getItem(LS)||"{}"));}catch(e){}
-function save(){localStorage.setItem(LS,JSON.stringify(S));}
-const $=s=>document.querySelector(s);
-const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-function mark(name){const m=document.createElement("div");m.innerHTML=name;return m.textContent;}
-/* ---------- navegação ---------- */
-const VIEWS={home:"Início",journey:"Jornada",tools:"Ferramentas",plan:"Plano de 30 dias",journal:"Diário",about:"Sobre o método"};
-function go(v){
- document.querySelectorAll(".view").forEach(x=>x.classList.remove("on"));
- document.querySelectorAll("[data-view]").forEach(a=>a.classList.toggle("on",a.dataset.view===v));
- $("#v-"+v).classList.add("on");$("#topTitle").textContent=VIEWS[v];
- if(v==="home")renderHome();if(v==="journey")renderJourney();if(v==="tools")renderTools();if(v==="plan")renderPlan();if(v==="journal")renderJournal();
- window.scrollTo(0,0);
-}
-document.querySelectorAll("[data-view]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();go(a.dataset.view);}));
-/* ---------- onboarding ---------- */
-const OB=["abaixar","levantar","prontidao","acabamento"];
-function obPrRender(){const el=$("#obPr");el.innerHTML=CHECK_PRONTA.map((q,i)=>`<label class="chk"><input type="checkbox" class="obpr" data-i="${i}"><span class="ct">${esc(q)}</span></label>`).join("");}
-function obFase(){
- const n=document.querySelectorAll(".obpr:checked").length;
- S.profile.readiness={n,at:new Date().toISOString()};save();
- $("#obFase").textContent= n<=3 ? "Você está na fase de estabilização de emergência" : "Você tem base para a reconstrução ativa";
- $("#obOrient").textContent= n<=3 ? "Esperado e normal nas primeiras semanas. Foque em estancar a sangria: sono mínimo, alimentação regular, uma pessoa com quem conversar — e nenhuma decisão grande." : "Continue: a Parte III do método (Sistematizar, Executar) é o seu lugar natural agora. Não esqueça de manter os pilares de estabilização funcionando.";
- $("#obTip").innerHTML= n<=3 ? "<b>Seu próximo passo:</b> Semana 1 do Plano de 30 dias — Matriz da Queda, Checklist de Sintomas e Painel Físico." : "<b>Seu próximo passo:</b> escolher o primeiro hábito com o Construtor de Hábito RESET. Um de cada vez.";
-}
-$("#obNext1").onclick=()=>{S.profile=S.profile||{};S.profile.nome=$("#obNome").value.trim();S.profile.perda=$("#obPerda").value.trim();save();$("#ob1").classList.add("hidden");$("#ob2").classList.remove("hidden");$("#obSteps").children[1].classList.add("on");};
-$("#obBack1").onclick=()=>{$("#ob2").classList.add("hidden");$("#ob1").classList.remove("hidden");$("#obSteps").children[1].classList.remove("on");};
-$("#obNext2").onclick=()=>{obFase();$("#ob2").classList.add("hidden");$("#ob3").classList.remove("hidden");$("#obSteps").children[2].classList.add("on");};
-$("#obBack2").onclick=()=>{$("#ob3").classList.add("hidden");$("#ob2").classList.remove("hidden");$("#obSteps").children[2].classList.remove("on");};
-$("#obDone").onclick=()=>{S.profile.done=true;save();$("#onbModal").classList.remove("on");renderHome();};
-/* ---------- home ---------- */
-function capsDone(){return Object.values(S.caps).filter(Boolean).length;}
-function toolsFilled(){return Object.values(S.tools).filter(t=>t&&Object.keys(t).length).length;}
-function renderHome(){
- const p=S.profile||{};
- $("#homeHello").innerHTML=`<h2 style="margin:0 0 4px">${p.nome?esc("Olá, "+p.nome):"Bem-vindo(a)"} 👋</h2>
- <p style="margin:0" class="muted">${p.perda?esc(`Você registrou: ${p.perda}`):"Este app transforma o livro Método RESET em ferramentas práticas."} — ${esc(new Date().toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long"}))}.</p>
- ${p.readiness?`<p style="margin:8px 0 0"><span class="badge ${p.readiness.n<=3?"b-s":"b-e"}">Prontidão: ${p.readiness.n} de 5 — ${p.readiness.n<=3?"estabilização de emergência":"pronto(a) para reconstrução ativa"}</span></p>`:""}`;
- $("#homeStats").innerHTML=`
-  <div class="box"><b>${capsDone()}</b><span>capítulos lidos de 15</span></div>
-  <div class="box"><b>${toolsFilled()}</b><span>ferramentas em uso</span></div>
-  <div class="box"><b>${(S.journal||[]).length}</b><span>registros no diário</span></div>
-  <div class="box"><b>${(S.habits||[]).length}</b><span>hábitos ativos</span></div>`;
- const unread=CHAPTERS.find(c=>!S.caps[c.n]);
- $("#homeNext").innerHTML=`<h2>${unread?"Continue de onde parou":"Jornada completa 🎉"}</h2>
- ${unread?`<p>Próximo: <b>Capítulo ${unread.n} — ${esc(unread.title)}</b> <span class="badge ${unread.badge}">${esc(unread.tagName)}</span></p>
- <button class="btn acc" id="goCap">Ler capítulo ${unread.n}</button>`:"<p>Você percorreu todos os capítulos. Mantenha o Painel de Manutenção Anual funcionando.</p>"}`;
- if(unread)$("#goCap").onclick=()=>openChapter(unread.n);
- $("#homeFase").innerHTML=`<h2>Em qual fase você está?</h2>
- <p class="muted" style="font-size:14px">A ordem importa: primeiro <b>Reconhecer</b> e <b>Estabilizar</b>, depois <b>Sistematizar</b>, <b>Executar</b> e <b>Transformar</b>.</p>
- <p style="margin:6px 0"><span class="badge b-r">R</span> Reconhecer &nbsp; <span class="badge b-e">E</span> Estabilizar<br>
- <span class="badge b-s">S</span> Sistematizar &nbsp; <span class="badge b-e">E</span> Executar &nbsp; <span class="badge b-t">T</span> Transformar</p>
- <button class="btn sec" style="margin-top:6px" onclick="go('plan')">Ver o Plano de 30 dias</button>`;
- const q=QUOTES[new Date().getDate()%QUOTES.length];
- $("#homeQuote").innerHTML=`<blockquote class="quote">“${esc(q.t)}”<span class="who">— ${esc(q.w)} · Método RESET</span></blockquote>`;
- $("#homePlan").innerHTML=`<h2>Próximos passos sugeridos</h2><ul style="margin:8px 0 0;padding-left:20px">
- <li>${S.profile&&S.profile.done?"Reavaliar a ":"Preencher a "}<b>Escala de Prontidão</b> a cada 2–3 semanas (Ferramentas)</li>
- <li>Check-in emocional no <b>Diário</b> — 3× por semana basta</li>
- <li>Painel de <b>Estabilização Integrado</b> uma vez por semana</li></ul>
- <button class="btn" style="margin-top:10px" onclick="go('tools')">Abrir as Ferramentas</button>`;
-}
-/* ---------- jornada ---------- */
-function renderJourney(){
- $("#journeyList").innerHTML=PARTS.map(pt=>{
-  const chs=CHAPTERS.filter(c=>c.part===pt.id);
-  return `<div class="part" style="border-left:5px solid ${pt.color}"><span class="tag">${esc(pt.name)}</span><h3>${chs.length} capítulos · ${esc(pt.desc)}</h3></div>`+
-  chs.map(c=>{const ok=S.caps[c.n];return `<div class="chap" data-cap="${c.n}">
-   <div class="num ${ok?"done":""}">${ok?"✓":c.n}</div>
-   <div style="min-width:0"><h4>Cap. ${c.n} — ${esc(c.title)}</h4><p>${esc(c.tagName)} ${c.tool?`· ferramenta “${esc(TOOLS[c.tool].name)}”`:""}</p></div>
-   <span class="go">›</span></div>`;}).join("");
- }).join("");
- document.querySelectorAll(".chap").forEach(el=>el.addEventListener("click",()=>openChapter(+el.dataset.cap)));
-}
-function openChapter(n){
- const c=CHAPTERS.find(x=>x.n===n);
- $("#chBox").innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-  <span class="badge ${c.part==="P1"?"b-r":c.part==="P2"?"b-e":c.part==="P3"?"b-s":"b-t"}">Capítulo ${c.n} · ${esc(c.tagName)}</span>
-  <button onclick="closeCh()" style="font-size:22px;color:var(--muted)">✕</button></div>
-  <h1 class="chapter-title">${esc(c.title)}</h1>
-  <p class="quote">“${esc(c.excerpt)}”</p>
-  <p>${esc(c.body)}</p>
-  <h3>Resumo acionável</h3><ul style="padding-left:20px">${c.summary.map(s=>`<li style="margin-bottom:8px">${esc(s)}</li>`).join("")}</ul>
-  <h3>⚠️ Sinais de que vale buscar ajuda profissional</h3><ul style="padding-left:20px">${SAFETY.map(s=>`<li>${esc(s)}</li>`).join("")}</ul>
-  <div class="bottom-actions">
-   <label class="chk" style="margin:0"><input type="checkbox" id="capDone" ${S.caps[n]?"checked":""}><span class="ct">Capítulo lido</span></label>
-   ${c.tool?`<button class="btn acc" id="openTool">Abrir ferramenta: ${esc(TOOLS[c.tool].name)} →</button>`:""}
-  </div>`;
- $("#chModal").classList.add("on");
- const ck=$("#capDone");ck.addEventListener("change",()=>{S.caps[n]=ck.checked;save();renderJourney();});
- if(c.tool)$("#openTool").onclick=()=>{$("#chModal").classList.remove("on");go("tools");openTool(c.tool);};
-}
-function closeCh(){$("#chModal").classList.remove("on");}
-/* ---------- ferramentas ---------- */
-let curTool=null;
-function renderTools(){
- if(curTool){renderTool(curTool);return;}
- $("#toolsGrid").classList.remove("hidden");$("#toolBox").classList.add("hidden");
- $("#toolsGrid").innerHTML=Object.entries(TOOLS).map(([k,t])=>`<button class="tcard" data-t="${k}"><span class="ic">${t.ic}</span><b>${esc(t.name)}</b><span>${esc(t.part)} — ${esc(t.intro.split(".")[0]+".")}</span></button>`).join("");
- document.querySelectorAll(".tcard").forEach(b=>b.addEventListener("click",()=>openTool(b.dataset.t)));
-}
-function openTool(k){curTool=k;renderTool(k);}
-function renderTool(k){
- const t=TOOLS[k];
- $("#toolsGrid").classList.add("hidden");$("#toolBox").classList.remove("hidden");
- const d=S.tools[k]=S.tools[k]||{};
- const checks=(t.checks||[]).map((c,i)=>{d["c"+i]=!!d["c"+i];return `<label class="chk ${d["c"+i]?"done":""}"><input type="checkbox" data-k="${k}" data-i="${i}" ${d["c"+i]?"checked":""}><span class="ct">${esc(c)}</span><span class="st">✓</span></label>`;}).join("");
- const fields=(t.fields||[]).map(f=>{const v=d[f.k]||"";return `<label>${esc(f.label)}</label>${f.type==="textarea"?`<textarea data-k="${k}" data-f="${f.k}" placeholder="${esc(f.ph||"")}">${esc(v)}</textarea>`:f.type==="number"?`<input type="number" data-k="${k}" data-f="${f.k}" value="${esc(v)}" placeholder="${esc(f.ph||"")}">`:`<input type="text" data-k="${k}" data-f="${f.k}" value="${esc(v)}" placeholder="${esc(f.ph||"")}">`}`;}).join("");
- $("#toolBody").innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-  <div><span class="badge ${t.badge}">${esc(t.part)}</span><h2 style="margin:8px 0 4px">${esc(t.name)}</h2></div>
-  <button class="btn sec" onclick="closeTool()">← Todas as ferramentas</button></div>
-  <p class="muted">${esc(t.intro)}</p>
-  ${checks?`<div class="card">${checks}
-   ${t.checks?`<div class="prog" style="margin-top:10px"><i style="width:${Math.round(d.checked?100:(Object.keys(d).filter(x=>x[0]==="c"&&d[x]).length/t.checks.length*100))}%"></i></div>`:""}</div>`:""}
-  ${fields?`<div class="card">${fields}</div>`:""}
-  <p class="muted" style="font-size:12.5px">Salvo automaticamente neste dispositivo.</p>`;
- $("#toolBody").querySelectorAll("input[type=text],input[type=number],textarea").forEach(el=>el.addEventListener("input",()=>{d[el.dataset.f]=el.value;save();}));
- $("#toolBody").querySelectorAll("input[type=checkbox]").forEach(el=>el.addEventListener("change",()=>{d[el.dataset.i]=el.checked;save();renderTool(k);}));
- $("#toolsBack").onclick=closeTool;
-}
-function closeTool(){curTool=null;renderTools();}
-/* ---------- plano ---------- */
-function renderPlan(){
- $("#planWeeks").innerHTML=PLAN_WEEKS.map((w,wi)=>{
-  const tasks=w.tasks.map((tk,ti)=>{
-   const key=wi+"_"+ti;const done=!!S.plan[key];
-   return `<label class="chk ${done?"done":""}"><input type="checkbox" data-key="${key}" ${done?"checked":""}><span class="ct">${esc(tk)}</span><span class="st">✓</span></label>`;}).join("");
-  const doneN=w.tasks.filter((_,ti)=>S.plan[wi+"_"+ti]).length;
-  return `<div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">${esc(w.n)}</h2><span class="badge ${w.badge}">${esc(w.focus)}</span></div>
-  <div class="prog" style="margin:12px 0"><i style="width:${doneN/w.tasks.length*100}%"></i></div>${tasks}</div>`;}).join("");
- document.querySelectorAll("#planWeeks input[type=checkbox]").forEach(el=>el.addEventListener("change",()=>{S.plan[el.dataset.key]=el.checked;save();renderPlan();}));
-}
-/* ---------- diário ---------- */
-function renderJournal(){
- S.journal=S.journal||[];
- const today=new Date().toISOString().slice(0,10);
- $("#jDate").value=S.jDate||today;
- S.journal.sort((a,b)=>b.d<b.d?1:-1);
- $("#jList").innerHTML=S.journal.length?S.journal.map((j,i)=>`<div class="jentry"><div class="top"><b>${esc(j.d)} · ${esc(j.emo)} · ${j.int}/10</b><button class="del" data-i="${i}">✕</button></div><small>${esc(j.nota||"")}</small></div>`).join(""):"<p class=\"muted\">Nenhum registro ainda. Três vezes por semana já faz diferença — nomear uma emoção reduz sua intensidade.</p>";
- document.querySelectorAll(".jentry .del").forEach(b=>b.addEventListener("click",()=>{S.journal.splice(+b.dataset.i,1);save();renderJournal();}));
-}
-$("#jAdd").onclick=()=>{
- const d=$("#jDate").value||new Date().toISOString().slice(0,10);
- const emo=$("#jEmo").value,int=+$("#jInt").value||5,nota=$("#jNota").value.trim();
- S.journal=S.journal||[];S.journal.unshift({d,emo,int,nota});S.jDate=d;
- $("#jNota").value="";save();renderJournal();
-};
-/* ---------- limpeza ---------- */
-$("#resetData").onclick=()=>{if(confirm("Apagar todos os dados deste app? Isso não pode ser desfeito.")){localStorage.removeItem(LS);location.reload();}};
-/* ---------- manifest (PWA leve) ---------- */
+  </div>
+</section>
 
-/* ---------- início ---------- */
-obPrRender();
-if(S.profile&&S.profile.done){$("#onbModal").classList.remove("on");}
-$("#onbModal").addEventListener("click",e=>{if(e.target.id==="onbModal")e.stopPropagation();});
-renderHome();
+<!-- Tools Section -->
+<section class="tools" id="produto">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Abra. Organize. Dê o primeiro passo.</span>
+      <h2>Um espaço seu. <em>Um pouco de clareza.</em></h2>
+      <p>O app para os dias em que tudo parece demais. Explore as ferramentas que acompanham o seu momento.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <h3>Quiz RESET</h3>
+        <p>Responda algumas perguntas e identifique qual área da sua vida merece sua atenção neste momento.</p>
+      </div>
+      <div class="tool-card">
+        <h3>Matriz da Queda</h3>
+        <p>Organize aquilo que parece um caos: separe o fato, a interpretação e o próximo passo possível, em uma única folha.</p>
+      </div>
+      <div class="tool-card">
+        <h3>Diário pessoal</h3>
+        <p>Um lugar só seu para escrever livremente, registrar o dia e escolher, se quiser, como está se sentindo.</p>
+      </div>
+      <div class="tool-card">
+        <h3>Mapa de Emoções</h3>
+        <p>Identifique e organize melhor o que está sentindo, em vez de carregar tudo misturado na cabeça.</p>
+      </div>
+      <div class="tool-card">
+        <h3>Painel Financeiro</h3>
+        <p>Organize informações importantes e comece a enxergar sua situação com mais clareza.</p>
+      </div>
+      <div class="tool-card">
+        <h3>Plano de 30 Dias</h3>
+        <p>Transforma a ideia de mudança em pequenas ações distribuídas em um cronograma flexível de semanas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Book Section -->
+<section class="book">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">O mesmo método. Dois jeitos de seguir.</span>
+      <h2>O livro explica. <em>A prática dá direção.</em></h2>
+    </div>
+    <div class="book-content">
+      <div class="book-text">
+        <p>Uma leitura guiada em 15 capítulos e 4 partes, com estudo de caso. No app, você encontra as ferramentas para transformar o que leu em um próximo passo.</p>
+        <ul class="book-features">
+          <li>Leia no aplicativo ou consulte o PDF</li>
+          <li>Retome a leitura de onde parou</li>
+          <li>Preencha só o que fizer sentido agora</li>
+        </ul>
+        <a href="https://pay.cakto.com.br/8anjw6z_1076473" target="_blank" rel="noopener" class="btn btn-primary">Conhecer o livro completo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Author Section -->
+<section class="author">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Antes de ser um método, foi meu recomeço.</span>
+      <h2>Eu também precisei <em>encontrar um caminho.</em></h2>
+    </div>
+    <div class="author-content">
+      <div class="author-quote">
+        <blockquote>"Eu não escrevi este livro depois de superar tudo. Escrevi no meio do processo, e continuei escrevendo enquanto ele acontecia."</blockquote>
+        <cite>— Lucas</cite>
+      </div>
+      <div class="author-bio">
+        <p><strong>Lucas de Freitas Sousa Oliveira</strong><br>Autor e criador do Método RESET</p>
+        <p>Depois da pandemia, perdi minha carreira nas Forças Armadas. Mais tarde, vivi a separação da mulher com quem estava desde 2014, mãe dos meus dois filhos. Em momentos diferentes, o chão sumiu debaixo de mim.</p>
+        <p>Eu não precisava ouvir mais um "vai passar". Precisava saber o que fazer na segunda-feira de manhã. Então reuni o pouco que havia estudado de Psicologia com leituras sobre luto, hábitos e comportamento, testando o que me ajudava a atravessar aqueles dias.</p>
+        <p>O RESET nasceu desse caminho. Não como uma promessa de resolver a vida de alguém, mas como a estrutura que eu gostaria de ter encontrado quando precisei recomeçar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Recomeços reais</span>
+      <h2>Pequenos passos. <em>Novos significados.</em></h2>
+      <p>O que Thiago, Juliana e Danilo compartilharam sobre o próprio caminho com o RESET.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p class="testimonial-context">Capítulo 12 · Protocolo de Recaída</p>
+        <p class="testimonial-text">"Antes eu teria desistido de tudo e me afundado. Pela primeira vez eu não desisti de mim."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">T</div>
+          <div class="author-info">
+            <h4>Thiago M.</h4>
+            <p>Relato compartilhado por mensagem</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-context">Checklist de Sintomas · Dia 22 do plano</p>
+        <p class="testimonial-text">"Quando cheguei no Capítulo 2 e preenchi o Checklist de Sintomas Normais, foi como tirar uma tonelada do peito."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">J</div>
+          <div class="author-info">
+            <h4>Juliana S.</h4>
+            <p>Relato compartilhado por mensagem</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-context">Construtor de Hábitos</p>
+        <p class="testimonial-text">"Parece pouco, mas ver o progresso somando dia após dia no aplicativo reconstruiu minha autoconfiança."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">D</div>
+          <div class="author-info">
+            <h4>Danilo R.</h4>
+            <p>Relato compartilhado por mensagem</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:40px;font-size:.9rem;color:var(--muted);font-style:italic;">Relatos individuais fornecidos à marca. Cada experiência é única e não representa uma garantia de resultados.</p>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Um pagamento. O método com você.</span>
+      <h2>Um investimento <em>no seu recomeço.</em></h2>
+      <p>O app, o livro e todas as ferramentas do RESET. Acesso vitalício, sem assinatura e sem mensalidade.</p>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-badge">KIT RESET COMPLETO</div>
+      <div class="pricing-price">
+        <div class="old">R$ 37,00</div>
+        <div class="current"><span>R$</span> 37</div>
+      </div>
+      <p class="pricing-note">Pagamento único. Acesso vitalício.</p>
+      <ul class="pricing-features">
+        <li>App com quiz e sugestão do próximo passo</li>
+        <li>Todas as ferramentas práticas do RESET</li>
+        <li>Diário pessoal e registro opcional de humor</li>
+        <li>Plano flexível de 30 dias</li>
+        <li>Livro completo: 15 capítulos, no app e em PDF</li>
+        <li>Progresso local com exportação de backup</li>
+        <li>Acesso vitalício, sem mensalidade</li>
+      </ul>
+      <a href="https://pay.cakto.com.br/8anjw6z_1076473" target="_blank" rel="noopener" class="btn btn-primary">Quero começar meu RESET</a>
+      <div class="pricing-guarantee">
+        <h4>7 dias para conhecer. Sem pressão para decidir.</h4>
+        <p>Experimente o método. Se não fizer sentido para você, solicite o reembolso em até 7 dias, conforme as condições da oferta.</p>
+        <p style="margin-top:12px;font-size:.85rem;">Link para baixar disponível somente na Cakto, após a confirmação do pagamento.<br>O aplicativo não exige login nem senha.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Pode perguntar</span>
+      <h2>Um pouco mais <em>de clareza.</em></h2>
+      <p>Recomeçar já traz perguntas suficientes. Vamos simplificar as outras.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>O que é exatamente o Método RESET?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            É um método acompanhado de ferramentas práticas para ajudar pessoas que estão passando por períodos de mudança, desorganização ou perda de direção a identificar prioridades e transformar reflexão em próximos passos.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Como recebo o link para baixar o aplicativo?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Após a confirmação do pagamento na Cakto, você receberá o link para baixar o aplicativo diretamente no seu e-mail e na tela de confirmação da compra.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Preciso de login e senha para usar o app?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Não. O aplicativo não exige login nem senha. Basta baixar e começar a usar imediatamente.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Preciso estar passando por uma situação muito grave para usar?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Não necessariamente. O Método RESET é útil tanto para momentos de crise quanto para quem busca mais organização e direção no dia a dia.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>O RESET substitui terapia?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Não. O Método RESET é uma ferramenta de autoconhecimento e organização pessoal, não substitui acompanhamento profissional de saúde mental.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Quanto tempo preciso dedicar por dia?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Não há tempo mínimo obrigatório. Você pode dedicar 10 minutos ou 1 hora, no seu ritmo. O importante é avançar no que faz sentido para você.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Preciso fazer tudo de uma vez?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            De jeito nenhum. O método é flexível. Você pode fazer uma parte hoje, outra amanhã, ou voltar em outra hora. Sem pressa, sem cobrança.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>O acesso é mensal?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Não. É um pagamento único de R$ 37 com acesso vitalício ao app, livro e todas as ferramentas. Sem mensalidade ou assinatura.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Por quanto tempo terei acesso?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Acesso vitalício. Uma vez que você compra, o método é seu para sempre, sem limitações de tempo.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Recebo o livro também?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Sim. O Kit RESET Completo inclui tanto o aplicativo quanto o livro digital completo em 15 capítulos, disponível para leitura no app e em PDF.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>E se eu falhar em algum dia?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Não existe "falhar". Se você parar por alguns dias, semanas ou meses, pode voltar quando quiser. O método respeita seu tempo e seu processo.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Como funciona a garantia de 7 dias?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Você tem 7 dias para experimentar o método. Se não fizer sentido para você, basta solicitar o reembolso dentro desse prazo, conforme as condições da oferta na Cakto.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<section class="cta-final">
+  <div class="container">
+    <span class="section-eyebrow">Método RESET</span>
+    <h2>Hoje, um passo. <em>O seu próximo começo.</em></h2>
+    <p>Você não precisa ver o caminho inteiro para começar a caminhar.</p>
+    <a href="https://pay.cakto.com.br/8anjw6z_1076473" target="_blank" rel="noopener" class="btn btn-primary">Quero descobrir meu próximo passo</a>
+    <p class="pricing-info">R$ 37 · Pagamento único · Garantia de 7 dias</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>&copy; 2024 Método RESET · Lucas de Freitas Sousa Oliveira. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(question => {
+  question.addEventListener('click', () => {
+    const item = question.parentElement;
+    const wasActive = item.classList.contains('active');
+    
+    // Close all items
+    document.querySelectorAll('.faq-item').forEach(faqItem => {
+      faqItem.classList.remove('active');
+    });
+    
+    // Open clicked item if it wasn't active
+    if (!wasActive) {
+      item.classList.add('active');
+    }
+  });
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Entrance animations
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.step-item, .tool-card, .testimonial, .faq-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
 </script>
+
 </body>
 </html>
