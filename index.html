@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#102a43">
-<meta name="description" content="Método RESET — Reconstrua sua vida com ferramentas práticas, um plano de 30 dias e acompanhamento personalizado.">
-<meta property="og:title" content="Método RESET — Reconstrução Pessoal">
-<meta property="og:description" content="Transforme sua vida em 30 dias com um método prático e comprovado.">
+<meta name="description" content="Método RESET — Reconstrua sua vida depois que o chão desaparece. App, livro e ferramentas práticas.">
+<meta property="og:title" content="Método RESET | Descubra o que fazer primeiro">
+<meta property="og:description" content="Você não precisa resolver tudo hoje. Organize o que está acontecendo e encontre um próximo passo possível.">
 <meta property="og:type" content="website">
-<title>Método RESET — Reconstrução Pessoal</title>
+<title>Método RESET | Descubra o que fazer primeiro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#102a43;
@@ -52,6 +52,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.3
   color:var(--white);
   position:relative;
   overflow:hidden;
+  padding:80px 0 60px;
 }
 
 .hero::before{
@@ -65,33 +66,58 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.3
 .hero-content{
   position:relative;
   z-index:1;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:80px;
-  align-items:center;
-  padding:80px 0;
+  max-width:900px;
+  margin:0 auto;
+  text-align:center;
 }
 
-.hero-text h1{
-  font-size:clamp(2.5rem,5vw,4rem);
+.hero-eyebrow{
+  display:inline-block;
+  font-size:.85rem;
+  font-weight:600;
+  letter-spacing:2px;
+  color:var(--gold);
   margin-bottom:24px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-size:clamp(2.5rem,6vw,4.5rem);
+  margin-bottom:32px;
   background:linear-gradient(135deg,var(--white) 0%,var(--gold) 100%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
+  line-height:1.2;
 }
 
-.hero-text p{
-  font-size:1.25rem;
+.hero-subtitle{
+  font-size:clamp(1.1rem,2.5vw,1.5rem);
   color:#cdd9e6;
-  margin-bottom:32px;
+  margin-bottom:16px;
+  line-height:1.6;
+}
+
+.hero-subtitle em{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  color:var(--gold);
+}
+
+.hero-description{
+  font-size:1.1rem;
+  color:#bcccdc;
+  margin-bottom:48px;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
   line-height:1.8;
 }
 
-.hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+.hero-cta{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
 
 .btn{
-  padding:18px 36px;
+  padding:18px 40px;
   border-radius:12px;
   font-weight:600;
   font-size:1rem;
@@ -124,172 +150,274 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.3
   border-color:var(--white);
 }
 
-.hero-form{
+.hero-quote{
+  margin-top:48px;
+  padding:24px 32px;
   background:rgba(255,255,255,.05);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:20px;
-  padding:40px;
+  border-left:4px solid var(--gold);
+  border-radius:8px;
+  text-align:left;
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-.hero-form h3{
+.hero-quote blockquote{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:1.2rem;
   color:var(--white);
-  font-size:1.75rem;
-  margin-bottom:8px;
+  margin-bottom:12px;
 }
 
-.hero-form p{
-  color:#bcccdc;
-  margin-bottom:24px;
-  font-size:.95rem;
-}
-
-.form-group{margin-bottom:20px}
-
-.form-group label{
-  display:block;
-  color:var(--white);
-  font-weight:500;
-  margin-bottom:8px;
+.hero-quote cite{
   font-size:.9rem;
+  color:#bcccdc;
+  font-style:normal;
 }
 
-.form-group input{
-  width:100%;
-  padding:14px 18px;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,.2);
-  background:rgba(255,255,255,.08);
-  color:var(--white);
-  font-size:1rem;
-  transition:all .3s;
+/* Section Base */
+section{padding:120px 0}
+
+.section-eyebrow{
+  display:block;
+  font-size:.8rem;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:16px;
+  text-align:center;
 }
 
-.form-group input::placeholder{color:rgba(255,255,255,.5)}
-
-.form-group input:focus{
-  outline:none;
-  border-color:var(--gold);
-  background:rgba(255,255,255,.12);
-}
-
-.hero-form button{
-  width:100%;
-  padding:16px;
-  font-size:1.05rem;
-}
-
-/* Benefits Section */
-.benefits{padding:120px 0;background:var(--white)}
-
-.section-header{text-align:center;margin-bottom:80px}
+.section-header{text-align:center;margin-bottom:80px;max-width:800px;margin-left:auto;margin-right:auto}
 
 .section-header h2{
   font-size:clamp(2rem,4vw,3rem);
-  margin-bottom:16px;
+  margin-bottom:20px;
   color:var(--ink);
+  line-height:1.3;
+}
+
+.section-header h2 em{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  color:var(--gold);
 }
 
 .section-header p{
   font-size:1.15rem;
   color:var(--muted);
-  max-width:600px;
+  line-height:1.8;
+}
+
+/* Problem Section */
+.problem{background:var(--white)}
+
+.problem-content{
+  max-width:800px;
   margin:0 auto;
+  text-align:center;
 }
 
-.benefits-grid{
+.problem-content h2{
+  font-size:clamp(2rem,4vw,3rem);
+  margin-bottom:24px;
+}
+
+.problem-content h2 em{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  color:var(--gold);
+}
+
+.problem-content > p{
+  font-size:1.15rem;
+  color:var(--muted);
+  margin-bottom:40px;
+  line-height:1.8;
+}
+
+.steps-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:32px;
+  margin-top:60px;
 }
 
-.benefit-card{
-  padding:40px;
+.step-item{
+  text-align:left;
+  padding:32px;
+  background:var(--bg);
   border-radius:16px;
   border:1px solid var(--border);
   transition:all .3s;
-  background:var(--white);
 }
 
-.benefit-card:hover{
-  transform:translateY(-8px);
+.step-item:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow);
+  border-color:var(--gold);
+}
+
+.step-number{
+  font-size:2.5rem;
+  font-weight:700;
+  color:var(--gold);
+  font-family:'Playfair Display',serif;
+  margin-bottom:16px;
+}
+
+.step-item h3{
+  font-size:1.3rem;
+  margin-bottom:12px;
+  color:var(--ink);
+}
+
+.step-item p{
+  color:var(--muted);
+  line-height:1.7;
+  font-size:.95rem;
+}
+
+/* Tools Section */
+.tools{background:var(--bg)}
+
+.tools-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px;
+  margin-top:60px;
+}
+
+.tool-card{
+  background:var(--white);
+  padding:36px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  transition:all .3s;
+}
+
+.tool-card:hover{
+  transform:translateY(-4px);
   box-shadow:var(--shadow-hover);
   border-color:var(--gold);
 }
 
-.benefit-icon{
-  width:64px;
-  height:64px;
-  border-radius:14px;
-  background:linear-gradient(135deg,rgba(212,175,55,.1) 0%,rgba(244,162,97,.1) 100%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:2rem;
-  margin-bottom:20px;
-}
-
-.benefit-card h3{
-  font-size:1.5rem;
-  margin-bottom:12px;
+.tool-card h3{
+  font-size:1.4rem;
+  margin-bottom:16px;
   color:var(--ink);
 }
 
-.benefit-card p{
+.tool-card p{
   color:var(--muted);
   line-height:1.7;
 }
 
-/* Method Section */
-.method{
-  padding:120px 0;
+/* Book Section */
+.book{background:var(--white)}
+
+.book-content{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.book-text h2{
+  font-size:clamp(2rem,4vw,3rem);
+  margin-bottom:24px;
+}
+
+.book-text h2 em{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  color:var(--gold);
+}
+
+.book-text > p{
+  font-size:1.1rem;
+  color:var(--muted);
+  margin-bottom:24px;
+  line-height:1.8;
+}
+
+.book-features{
+  list-style:none;
+  margin:32px 0;
+}
+
+.book-features li{
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+  color:var(--ink);
+  font-size:1rem;
+}
+
+.book-features li:last-child{border-bottom:none}
+
+/* Author Section */
+.author{
   background:linear-gradient(135deg,var(--ink) 0%,var(--ink-light) 100%);
   color:var(--white);
 }
 
-.method .section-header h2{color:var(--white)}
-.method .section-header p{color:#cdd9e6}
+.author .section-eyebrow{color:var(--gold)}
 
-.method-steps{
+.author .section-header h2{color:var(--white)}
+.author .section-header h2 em{color:var(--gold)}
+.author .section-header p{color:#cdd9e6}
+
+.author-content{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:40px;
-  margin-top:60px;
+  grid-template-columns:1fr 2fr;
+  gap:60px;
+  align-items:start;
+  max-width:1000px;
+  margin:0 auto;
 }
 
-.step{text-align:center}
-
-.step-number{
-  width:80px;
-  height:80px;
-  border-radius:50%;
-  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);
-  color:var(--ink);
-  font-size:2rem;
-  font-weight:700;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:0 auto 24px;
-  box-shadow:0 10px 30px rgba(212,175,55,.3);
+.author-quote{
+  padding:32px;
+  background:rgba(255,255,255,.05);
+  border-left:4px solid var(--gold);
+  border-radius:8px;
+  margin-bottom:32px;
 }
 
-.step h3{
-  font-size:1.5rem;
-  margin-bottom:12px;
+.author-quote blockquote{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:1.2rem;
+  color:var(--white);
+  margin-bottom:16px;
+  line-height:1.6;
 }
 
-.step p{
+.author-quote cite{
+  font-size:1rem;
+  color:var(--gold);
+  font-style:normal;
+  font-weight:600;
+}
+
+.author-bio{
   color:#bcccdc;
-  line-height:1.7;
+  line-height:1.8;
+  font-size:1rem;
 }
+
+.author-bio p{margin-bottom:20px}
+
+.author-bio strong{color:var(--gold)}
 
 /* Testimonials */
-.testimonials{padding:120px 0;background:var(--bg)}
+.testimonials{background:var(--bg)}
 
 .testimonials-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
   gap:32px;
 }
 
@@ -312,11 +440,20 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.3
   line-height:1;
 }
 
+.testimonial-context{
+  font-size:.85rem;
+  color:var(--muted);
+  margin-bottom:20px;
+  font-style:italic;
+}
+
 .testimonial-text{
-  font-size:1.05rem;
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:1.15rem;
   line-height:1.8;
   color:var(--ink);
-  margin-bottom:24px;
+  margin-bottom:32px;
   position:relative;
   z-index:1;
 }
@@ -338,12 +475,14 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.3
   color:var(--ink);
   font-weight:700;
   font-size:1.3rem;
+  flex:none;
 }
 
 .author-info h4{
   font-size:1.1rem;
   margin-bottom:4px;
   font-family:'Inter',sans-serif;
+  font-weight:600;
 }
 
 .author-info p{
@@ -351,23 +490,218 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.3
   color:var(--muted);
 }
 
-/* CTA Section */
-.cta{
-  padding:120px 0;
-  background:var(--white);
+/* Pricing */
+.pricing{background:var(--white)}
+
+.pricing-card{
+  max-width:600px;
+  margin:60px auto 0;
+  background:var(--bg);
+  border:2px solid var(--gold);
+  border-radius:20px;
+  padding:60px 48px;
   text-align:center;
+  box-shadow:var(--shadow);
 }
 
-.cta h2{
+.pricing-badge{
+  display:inline-block;
+  padding:8px 20px;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);
+  color:var(--ink);
+  border-radius:999px;
+  font-size:.85rem;
+  font-weight:700;
+  letter-spacing:1px;
+  margin-bottom:32px;
+}
+
+.pricing-price{
+  margin-bottom:32px;
+}
+
+.pricing-price .old{
+  font-size:1.2rem;
+  color:var(--muted);
+  text-decoration:line-through;
+  margin-bottom:8px;
+}
+
+.pricing-price .current{
+  font-size:3.5rem;
+  font-weight:700;
+  color:var(--ink);
+  font-family:'Playfair Display',serif;
+}
+
+.pricing-price .current span{
+  font-size:2rem;
+  vertical-align:top;
+}
+
+.pricing-note{
+  font-size:.95rem;
+  color:var(--muted);
+  margin-bottom:40px;
+}
+
+.pricing-features{
+  list-style:none;
+  text-align:left;
+  margin:40px 0;
+}
+
+.pricing-features li{
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+  color:var(--ink);
+  font-size:1rem;
+  display:flex;
+  align-items:start;
+  gap:12px;
+}
+
+.pricing-features li:last-child{border-bottom:none}
+
+.pricing-features li::before{
+  content:'✓';
+  color:var(--gold);
+  font-weight:700;
+  font-size:1.2rem;
+  flex:none;
+}
+
+.pricing-guarantee{
+  margin-top:40px;
+  padding:24px;
+  background:var(--white);
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+
+.pricing-guarantee h4{
+  font-size:1.1rem;
+  margin-bottom:12px;
+  color:var(--ink);
+}
+
+.pricing-guarantee p{
+  font-size:.95rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* FAQ */
+.faq{background:var(--bg)}
+
+.faq-grid{
+  max-width:800px;
+  margin:60px auto 0;
+}
+
+.faq-item{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:12px;
+  margin-bottom:16px;
+  overflow:hidden;
+  transition:all .3s;
+}
+
+.faq-item:hover{
+  border-color:var(--gold);
+}
+
+.faq-question{
+  padding:24px 32px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.faq-question h3{
+  font-size:1.1rem;
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  margin:0;
+}
+
+.faq-toggle{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold);
+  font-size:1.5rem;
+  font-weight:300;
+  flex:none;
+  transition:all .3s;
+}
+
+.faq-item.active .faq-toggle{
+  background:var(--gold);
+  color:var(--ink);
+  transform:rotate(45deg);
+}
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .3s ease;
+}
+
+.faq-item.active .faq-answer{
+  max-height:500px;
+}
+
+.faq-answer-content{
+  padding:0 32px 24px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+/* CTA Final */
+.cta-final{
+  background:linear-gradient(135deg,var(--ink) 0%,var(--ink-light) 100%);
+  color:var(--white);
+  text-align:center;
+  padding:120px 0;
+}
+
+.cta-final .section-eyebrow{color:var(--gold)}
+
+.cta-final h2{
   font-size:clamp(2rem,4vw,3rem);
+  color:var(--white);
   margin-bottom:20px;
 }
 
-.cta p{
+.cta-final h2 em{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  color:var(--gold);
+}
+
+.cta-final > .container > p{
   font-size:1.2rem;
-  color:var(--muted);
+  color:#cdd9e6;
+  margin-bottom:48px;
   max-width:600px;
-  margin:0 auto 40px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.cta-final .btn-primary{margin-bottom:24px}
+
+.cta-final .pricing-info{
+  font-size:1rem;
+  color:#bcccdc;
 }
 
 /* Footer */
@@ -382,19 +716,18 @@ footer p{font-size:.95rem}
 
 /* Responsive */
 @media(max-width:968px){
-  .hero-content{grid-template-columns:1fr;gap:60px}
-  .benefits-grid,.testimonials-grid{grid-template-columns:1fr}
-  .method-steps{grid-template-columns:1fr}
+  .book-content,.author-content{grid-template-columns:1fr;gap:40px}
+  .steps-grid,.tools-grid,.testimonials-grid{grid-template-columns:1fr}
 }
 
 @media(max-width:640px){
-  .hero{min-height:auto;padding:60px 0}
-  .hero-content{padding:40px 0}
-  .hero-form{padding:30px 24px}
-  .benefits,.method,.testimonials,.cta{padding:80px 0}
+  section{padding:80px 0}
+  .hero{padding:60px 0 40px}
   .section-header{margin-bottom:50px}
-  .benefit-card,.testimonial{padding:30px}
-  .btn{padding:16px 28px;font-size:.95rem}
+  .tool-card,.testimonial,.pricing-card{padding:32px 24px}
+  .btn{padding:16px 32px;font-size:.95rem}
+  .faq-question{padding:20px 24px}
+  .faq-answer-content{padding:0 24px 20px}
 }
 </style>
 </head>
@@ -404,102 +737,131 @@ footer p{font-size:.95rem}
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <div class="hero-text">
-        <h1>Reconstrua sua vida em 30 dias</h1>
-        <p>O Método RESET é um programa prático de reconstrução pessoal que vai te guiar passo a passo para transformar sua mente, corpo e rotina.</p>
-        <div class="hero-cta">
-          <a href="#formulario" class="btn btn-primary">Quero Começar Agora</a>
-          <a href="#metodo" class="btn btn-secondary">Saiba Mais</a>
-        </div>
+      <span class="hero-eyebrow">Um próximo passo. Não a vida inteira.</span>
+      <h1>Método RESET.</h1>
+      <p class="hero-subtitle">Você não precisa <em>resolver tudo hoje.</em></p>
+      <p class="hero-description">Organize o que está acontecendo, entenda suas prioridades e encontre um próximo passo possível.</p>
+      <div class="hero-cta">
+        <a href="https://pay.cakto.com.br/8anjw6z_1076473" target="_blank" rel="noopener" class="btn btn-primary">Descobrir meu próximo passo</a>
+        <a href="#produto" class="btn btn-secondary">Ver por dentro</a>
       </div>
-      <div class="hero-form" id="formulario">
-        <h3>Comece sua transformação</h3>
-        <p>Receba acesso gratuito aos primeiros dias do método</p>
-        <form id="leadForm">
-          <div class="form-group">
-            <label for="nome">Seu nome</label>
-            <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Seu melhor e-mail</label>
-            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-          </div>
-          <button type="submit" class="btn btn-primary">Quero Acesso Gratuito</button>
-        </form>
+      <div class="hero-quote">
+        <blockquote>"Pela primeira vez eu não desisti de mim."</blockquote>
+        <cite>— Thiago M. sobre o Protocolo de Recaída</cite>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Benefits Section -->
-<section class="benefits">
+<!-- Problem Section -->
+<section class="problem">
+  <div class="container">
+    <div class="problem-content">
+      <span class="section-eyebrow">Talvez não falte força. Falte direção.</span>
+      <h2>Menos cobrança. <em>Mais um caminho.</em></h2>
+      <p>Uma separação, uma perda, uma mudança inesperada. Quando a vida sai do eixo, você não precisa de mais um "pensa positivo". Precisa saber por onde começar.</p>
+      <a href="#produto" class="btn btn-primary">Encontre seu ponto de partida</a>
+    </div>
+    <div class="steps-grid">
+      <div class="step-item">
+        <div class="step-number">01</div>
+        <h3>Entenda onde você está</h3>
+        <p>Olhe para o seu momento com mais clareza. O quiz ajuda a encontrar um ponto de partida, sem precisar ter todas as respostas.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">02</div>
+        <h3>Descubra o que merece atenção</h3>
+        <p>Identifique quais áreas da sua vida precisam de cuidado agora, sem sobrecarga ou pressão.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">03</div>
+        <h3>Encontre seu próximo passo</h3>
+        <p>Receba uma sugestão prática de ferramenta para começar, baseada no seu momento atual.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">04</div>
+        <h3>Continue avançando</h3>
+        <p>Avance no seu tempo, com ferramentas que se adaptam à sua jornada de reconstrução.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools Section -->
+<section class="tools" id="produto">
   <div class="container">
     <div class="section-header">
-      <h2>Por que o Método RESET funciona?</h2>
-      <p>Uma abordagem completa que une ciência, prática e acompanhamento personalizado</p>
+      <span class="section-eyebrow">Abra. Organize. Dê o primeiro passo.</span>
+      <h2>Um espaço seu. <em>Um pouco de clareza.</em></h2>
+      <p>O app para os dias em que tudo parece demais. Explore as ferramentas que acompanham o seu momento.</p>
     </div>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon">🎯</div>
-        <h3>Método Prático</h3>
-        <p>Exercícios diários simples e objetivos que se encaixam na sua rotina, sem complicação.</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <h3>Quiz RESET</h3>
+        <p>Responda algumas perguntas e identifique qual área da sua vida merece sua atenção neste momento.</p>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">📊</div>
+      <div class="tool-card">
+        <h3>Matriz da Queda</h3>
+        <p>Organize aquilo que parece um caos: separe o fato, a interpretação e o próximo passo possível, em uma única folha.</p>
+      </div>
+      <div class="tool-card">
+        <h3>Diário pessoal</h3>
+        <p>Um lugar só seu para escrever livremente, registrar o dia e escolher, se quiser, como está se sentindo.</p>
+      </div>
+      <div class="tool-card">
+        <h3>Mapa de Emoções</h3>
+        <p>Identifique e organize melhor o que está sentindo, em vez de carregar tudo misturado na cabeça.</p>
+      </div>
+      <div class="tool-card">
+        <h3>Painel Financeiro</h3>
+        <p>Organize informações importantes e comece a enxergar sua situação com mais clareza.</p>
+      </div>
+      <div class="tool-card">
         <h3>Plano de 30 Dias</h3>
-        <p>Um cronograma estruturado que te guia do zero à transformação completa em apenas um mês.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">📔</div>
-        <h3>Diário Personalizado</h3>
-        <p>Acompanhe sua evolução com ferramentas de autoconhecimento e registro diário.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🧠</div>
-        <h3>Baseado em Ciência</h3>
-        <p>Técnicas comprovadas de psicologia positiva, neurociência e desenvolvimento pessoal.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">💪</div>
-        <h3>Resultados Reais</h3>
-        <p>Milhares de pessoas já transformaram suas vidas com o Método RESET. Agora é sua vez.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🌟</div>
-        <h3>Suporte Contínuo</h3>
-        <p>Acesso a uma comunidade de apoio e materiais complementares para sua jornada.</p>
+        <p>Transforma a ideia de mudança em pequenas ações distribuídas em um cronograma flexível de semanas.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Method Section -->
-<section class="method" id="metodo">
+<!-- Book Section -->
+<section class="book">
   <div class="container">
     <div class="section-header">
-      <h2>Como funciona o Método RESET</h2>
-      <p>Um caminho claro e estruturado para sua transformação pessoal</p>
+      <span class="section-eyebrow">O mesmo método. Dois jeitos de seguir.</span>
+      <h2>O livro explica. <em>A prática dá direção.</em></h2>
     </div>
-    <div class="method-steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Diagnóstico</h3>
-        <p>Entenda seus padrões atuais e identifique os pontos que precisam de atenção.</p>
+    <div class="book-content">
+      <div class="book-text">
+        <p>Uma leitura guiada em 15 capítulos e 4 partes, com estudo de caso. No app, você encontra as ferramentas para transformar o que leu em um próximo passo.</p>
+        <ul class="book-features">
+          <li>Leia no aplicativo ou consulte o PDF</li>
+          <li>Retome a leitura de onde parou</li>
+          <li>Preencha só o que fizer sentido agora</li>
+        </ul>
+        <a href="https://pay.cakto.com.br/8anjw6z_1076473" target="_blank" rel="noopener" class="btn btn-primary">Conhecer o livro completo</a>
       </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Planejamento</h3>
-        <p>Defina metas claras e crie um plano de ação personalizado para sua vida.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Author Section -->
+<section class="author">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Antes de ser um método, foi meu recomeço.</span>
+      <h2>Eu também precisei <em>encontrar um caminho.</em></h2>
+    </div>
+    <div class="author-content">
+      <div class="author-quote">
+        <blockquote>"Eu não escrevi este livro depois de superar tudo. Escrevi no meio do processo, e continuei escrevendo enquanto ele acontecia."</blockquote>
+        <cite>— Lucas</cite>
       </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Ação</h3>
-        <p>Execute diariamente com ferramentas práticas e exercícios orientados.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">4</div>
-        <h3>Transformação</h3>
-        <p>Veja os resultados aparecerem e consolide suas novas práticas para sempre.</p>
+      <div class="author-bio">
+        <p><strong>Lucas de Freitas Sousa Oliveira</strong><br>Autor e criador do Método RESET</p>
+        <p>Depois da pandemia, perdi minha carreira nas Forças Armadas. Mais tarde, vivi a separação da mulher com quem estava desde 2014, mãe dos meus dois filhos. Em momentos diferentes, o chão sumiu debaixo de mim.</p>
+        <p>Eu não precisava ouvir mais um "vai passar". Precisava saber o que fazer na segunda-feira de manhã. Então reuni o pouco que havia estudado de Psicologia com leituras sobre luto, hábitos e comportamento, testando o que me ajudava a atravessar aqueles dias.</p>
+        <p>O RESET nasceu desse caminho. Não como uma promessa de resolver a vida de alguém, mas como a estrutura que eu gostaria de ter encontrado quando precisei recomeçar.</p>
       </div>
     </div>
   </div>
@@ -509,37 +871,221 @@ footer p{font-size:.95rem}
 <section class="testimonials">
   <div class="container">
     <div class="section-header">
-      <h2>Histórias de transformação</h2>
-      <p>Veja o que quem já aplicou o Método RESET tem a dizer</p>
+      <span class="section-eyebrow">Recomeços reais</span>
+      <h2>Pequenos passos. <em>Novos significados.</em></h2>
+      <p>O que Thiago, Juliana e Danilo compartilharam sobre o próprio caminho com o RESET.</p>
     </div>
     <div class="testimonials-grid">
       <div class="testimonial">
-        <p class="testimonial-text">Em 30 dias, consegui mudar hábitos que eu tentava mudar há anos. O método é simples, prático e realmente funciona. Recomendo de olhos fechados!</p>
+        <p class="testimonial-context">Capítulo 12 · Protocolo de Recaída</p>
+        <p class="testimonial-text">"Antes eu teria desistido de tudo e me afundado. Pela primeira vez eu não desisti de mim."</p>
         <div class="testimonial-author">
-          <div class="author-avatar">MC</div>
+          <div class="author-avatar">T</div>
           <div class="author-info">
-            <h4>Maria Clara</h4>
-            <p>Empreendedora, 34 anos</p>
+            <h4>Thiago M.</h4>
+            <p>Relato compartilhado por mensagem</p>
           </div>
         </div>
       </div>
       <div class="testimonial">
-        <p class="testimonial-text">O que mais me impressionou foi a clareza do processo. Cada dia eu sabia exatamente o que fazer, e os resultados começaram a aparecer na primeira semana.</p>
+        <p class="testimonial-context">Checklist de Sintomas · Dia 22 do plano</p>
+        <p class="testimonial-text">"Quando cheguei no Capítulo 2 e preenchi o Checklist de Sintomas Normais, foi como tirar uma tonelada do peito."</p>
         <div class="testimonial-author">
-          <div class="author-avatar">RS</div>
+          <div class="author-avatar">J</div>
           <div class="author-info">
-            <h4>Ricardo Santos</h4>
-            <p>Engenheiro, 41 anos</p>
+            <h4>Juliana S.</h4>
+            <p>Relato compartilhado por mensagem</p>
           </div>
         </div>
       </div>
       <div class="testimonial">
-        <p class="testimonial-text">Estava em um momento muito difícil da minha vida. O Método RESET me deu as ferramentas para reconstruir minha rotina e minha mentalidade. Sou muito grata!</p>
+        <p class="testimonial-context">Construtor de Hábitos</p>
+        <p class="testimonial-text">"Parece pouco, mas ver o progresso somando dia após dia no aplicativo reconstruiu minha autoconfiança."</p>
         <div class="testimonial-author">
-          <div class="author-avatar">AF</div>
+          <div class="author-avatar">D</div>
           <div class="author-info">
-            <h4>Ana Fernandes</h4>
-            <p>Professora, 29 anos</p>
+            <h4>Danilo R.</h4>
+            <p>Relato compartilhado por mensagem</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:40px;font-size:.9rem;color:var(--muted);font-style:italic;">Relatos individuais fornecidos à marca. Cada experiência é única e não representa uma garantia de resultados.</p>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Um pagamento. O método com você.</span>
+      <h2>Um investimento <em>no seu recomeço.</em></h2>
+      <p>O app, o livro e todas as ferramentas do RESET. Acesso vitalício, sem assinatura e sem mensalidade.</p>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-badge">KIT RESET COMPLETO</div>
+      <div class="pricing-price">
+        <div class="old">R$ 37,00</div>
+        <div class="current"><span>R$</span> 37</div>
+      </div>
+      <p class="pricing-note">Pagamento único. Acesso vitalício.</p>
+      <ul class="pricing-features">
+        <li>App com quiz e sugestão do próximo passo</li>
+        <li>Todas as ferramentas práticas do RESET</li>
+        <li>Diário pessoal e registro opcional de humor</li>
+        <li>Plano flexível de 30 dias</li>
+        <li>Livro completo: 15 capítulos, no app e em PDF</li>
+        <li>Progresso local com exportação de backup</li>
+        <li>Acesso vitalício, sem mensalidade</li>
+      </ul>
+      <a href="https://pay.cakto.com.br/8anjw6z_1076473" target="_blank" rel="noopener" class="btn btn-primary">Quero começar meu RESET</a>
+      <div class="pricing-guarantee">
+        <h4>7 dias para conhecer. Sem pressão para decidir.</h4>
+        <p>Experimente o método. Se não fizer sentido para você, solicite o reembolso em até 7 dias, conforme as condições da oferta.</p>
+        <p style="margin-top:12px;font-size:.85rem;">Link para baixar disponível somente na Cakto, após a confirmação do pagamento.<br>O aplicativo não exige login nem senha.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Pode perguntar</span>
+      <h2>Um pouco mais <em>de clareza.</em></h2>
+      <p>Recomeçar já traz perguntas suficientes. Vamos simplificar as outras.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>O que é exatamente o Método RESET?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            É um método acompanhado de ferramentas práticas para ajudar pessoas que estão passando por períodos de mudança, desorganização ou perda de direção a identificar prioridades e transformar reflexão em próximos passos.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Como recebo o link para baixar o aplicativo?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Após a confirmação do pagamento na Cakto, você receberá o link para baixar o aplicativo diretamente no seu e-mail e na tela de confirmação da compra.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Preciso de login e senha para usar o app?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Não. O aplicativo não exige login nem senha. Basta baixar e começar a usar imediatamente.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Preciso estar passando por uma situação muito grave para usar?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Não necessariamente. O Método RESET é útil tanto para momentos de crise quanto para quem busca mais organização e direção no dia a dia.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>O RESET substitui terapia?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Não. O Método RESET é uma ferramenta de autoconhecimento e organização pessoal, não substitui acompanhamento profissional de saúde mental.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Quanto tempo preciso dedicar por dia?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Não há tempo mínimo obrigatório. Você pode dedicar 10 minutos ou 1 hora, no seu ritmo. O importante é avançar no que faz sentido para você.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Preciso fazer tudo de uma vez?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            De jeito nenhum. O método é flexível. Você pode fazer uma parte hoje, outra amanhã, ou voltar em outra hora. Sem pressa, sem cobrança.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>O acesso é mensal?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Não. É um pagamento único de R$ 37 com acesso vitalício ao app, livro e todas as ferramentas. Sem mensalidade ou assinatura.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Por quanto tempo terei acesso?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Acesso vitalício. Uma vez que você compra, o método é seu para sempre, sem limitações de tempo.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Recebo o livro também?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Sim. O Kit RESET Completo inclui tanto o aplicativo quanto o livro digital completo em 15 capítulos, disponível para leitura no app e em PDF.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>E se eu falhar em algum dia?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Não existe "falhar". Se você parar por alguns dias, semanas ou meses, pode voltar quando quiser. O método respeita seu tempo e seu processo.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Como funciona a garantia de 7 dias?</h3>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Você tem 7 dias para experimentar o método. Se não fizer sentido para você, basta solicitar o reembolso dentro desse prazo, conforme as condições da oferta na Cakto.
           </div>
         </div>
       </div>
@@ -547,48 +1093,44 @@ footer p{font-size:.95rem}
   </div>
 </section>
 
-<!-- CTA Section -->
-<section class="cta">
+<!-- CTA Final -->
+<section class="cta-final">
   <div class="container">
-    <h2>Pronto para transformar sua vida?</h2>
-    <p>Comece hoje mesmo sua jornada de reconstrução pessoal com acesso gratuito aos primeiros dias do método.</p>
-    <a href="#formulario" class="btn btn-primary">Quero Começar Minha Transformação</a>
+    <span class="section-eyebrow">Método RESET</span>
+    <h2>Hoje, um passo. <em>O seu próximo começo.</em></h2>
+    <p>Você não precisa ver o caminho inteiro para começar a caminhar.</p>
+    <a href="https://pay.cakto.com.br/8anjw6z_1076473" target="_blank" rel="noopener" class="btn btn-primary">Quero descobrir meu próximo passo</a>
+    <p class="pricing-info">R$ 37 · Pagamento único · Garantia de 7 dias</p>
   </div>
 </section>
 
 <!-- Footer -->
 <footer>
   <div class="container">
-    <p>&copy; 2024 Método RESET. Todos os direitos reservados.</p>
+    <p>&copy; 2024 Método RESET · Lucas de Freitas Sousa Oliveira. Todos os direitos reservados.</p>
   </div>
 </footer>
 
 <script>
-document.getElementById('leadForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const nome = document.getElementById('nome').value;
-  const email = document.getElementById('email').value;
-  
-  // Aqui você pode integrar com seu serviço de email marketing
-  // Por exemplo: Mailchimp, ConvertKit, ActiveCampaign, etc.
-  
-  // Exemplo de envio para console (substitua pela integração real)
-  console.log('Novo lead capturado:', { nome, email });
-  
-  // Mensagem de sucesso
-  const formContainer = document.querySelector('.hero-form');
-  formContainer.innerHTML = `
-    <h3>Parabéns, ${nome}! 🎉</h3>
-    <p>Seu acesso gratuito foi enviado para <strong>${email}</strong>.</p>
-    <p style="margin-top:20px;color:#bcccdc;font-size:.95rem;">Verifique sua caixa de entrada (e o spam) para receber os primeiros dias do método.</p>
-  `;
-  
-  // Aqui você pode adicionar integração com Google Analytics, Facebook Pixel, etc.
-  // gtag('event', 'lead_capture', { 'event_category': 'form', 'event_label': 'hero_form' });
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(question => {
+  question.addEventListener('click', () => {
+    const item = question.parentElement;
+    const wasActive = item.classList.contains('active');
+    
+    // Close all items
+    document.querySelectorAll('.faq-item').forEach(faqItem => {
+      faqItem.classList.remove('active');
+    });
+    
+    // Open clicked item if it wasn't active
+    if (!wasActive) {
+      item.classList.add('active');
+    }
+  });
 });
 
-// Smooth scroll para links internos
+// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -599,7 +1141,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Animação de entrada dos elementos
+// Entrance animations
 const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
 const observer = new IntersectionObserver(function(entries) {
   entries.forEach(entry => {
@@ -610,7 +1152,7 @@ const observer = new IntersectionObserver(function(entries) {
   });
 }, observerOptions);
 
-document.querySelectorAll('.benefit-card, .step, .testimonial').forEach(el => {
+document.querySelectorAll('.step-item, .tool-card, .testimonial, .faq-item').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
